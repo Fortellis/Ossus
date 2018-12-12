@@ -1,0 +1,26 @@
+{
+  "name": "ossus-components",
+  "version": "1.0.0",
+  "description": "Components for the stock Ossus docs experience",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "npm run clean; npm run build",
+    "build": "babel src -d dist",
+    "clean": "rm -r dist"
+  },
+  "author": "Jared K Jones",
+  "license": "ISC",
+  "dependencies": {
+    "emotion": "^9.2.12",
+    "emotion-theming": "^9.2.9",
+    "polished": "^2.3.0",
+    "prop-types": "^15.6.2",
+    "react-emotion": "^9.2.12"
+  },
+  "peerDependencies": {
+    "next": "^7.0.2",
+    "ossus": "^1.0.0",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1"
+  }
+}

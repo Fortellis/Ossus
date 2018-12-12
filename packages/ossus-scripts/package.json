@@ -1,0 +1,12 @@
+{
+  "name": "ossus-scripts",
+  "author": "Jared K Jones",
+  "version": "1.0.0",
+  "description": "Build scripts for Ossus documentation Framework",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "npm run clean; npm run build",
+    "build": "babel src -d dist",
+    "clean": "rm -r dist"
+  }
+}

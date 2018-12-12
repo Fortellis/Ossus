@@ -1,0 +1,16 @@
+{
+  "name": "create-ossus",
+  "version": "1.0.0",
+  "description": "Scripts to create a default Ossus documentation app",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "npm run clean; npm run build; cp -r ./template/ ./dist/template",
+    "build": "babel src -d dist",
+    "clean": "rm -r dist"
+  },
+  "author": "Jared K Jones",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^7.0.1"
+  }
+}
