@@ -15,7 +15,7 @@ import Components, {
     Menu
 } from 'ossus-components';
 // Components
-import getDoc from '../core/getDoc';
+import getDoc from '../src/getDoc';
 
 class Doc extends Component {
 

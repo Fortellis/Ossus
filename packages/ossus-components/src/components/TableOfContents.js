@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
-import { Routes, docs } from 'ossus';
+import { docs, withConfig } from 'ossus';
+import { Routes } from 'ossus';
 
 const TableOfContents = ({ config, page, router: { query } }) => {
-    const contents = docs(config.toc).getPageToc(page);
+    const contents = docs(config.toc).getPage(page);
 
-    if (!toc || !page) {
+    if (!contents || !page) {
         return null;
     }
 
@@ -119,4 +120,4 @@ const SectionList = styled('ul')`
     
 `;
 
-export default withRouter(TableOfContents);
+export default withConfig(withRouter(TableOfContents));

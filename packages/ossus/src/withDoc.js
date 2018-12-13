@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import docs from './utils/docs';
 
 // HOC to manage the state required for the base doc component
 // Expects to be wrapped by withConfig HOC
@@ -15,14 +16,7 @@ function withDocRouting(WrappedComponent) {
         }
 
         static getInitialProps = async (context) => {
-            const { page, section, doc } = context.query;
             let props = {};
-            try {
-                const content = await require(`../documentation/${page}/${section}/${doc}.md`);
-                props = { statusCode: 200, content, page, section, doc };
-            } catch(err) {
-                props = { statusCode: 404, content: '', page };
-            }
             // Call the wrapped components getInitialProps and add to props passed down
             if (WrappedComponent.hasOwnProperty('getInitialProps')) {
                 return { ...props, ...WrappedComponent.getInitialProps(context) };

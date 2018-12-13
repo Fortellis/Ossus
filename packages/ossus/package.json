@@ -6,15 +6,21 @@
   "scripts": {
     "prepare": "npm run clean; npm run build",
     "build": "babel src -d dist",
-    "clean": "rm -r dist"
+    "clean": "rm -r dist",
+    "pack": "webpack --mode=development --config webpack.config.js"
   },
   "author": "Jared K Jones",
   "license": "ISC",
   "dependencies": {
-    "emotion": "^9.2.12",
+    "@babel/runtime": "^7.2.0",
+    "@emotion/core": "^10.0.4",
+    "@emotion/styled": "^10.0.4",
+    "next": "^7.0.2",
     "next-routes": "^1.4.2",
     "prop-types": "^15.6.2",
-    "react-emotion": "^9.2.12",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "regenerator-runtime": "^0.13.1",
     "remark": "^10.0.0",
     "remark-external-links": "^3.1.1",
     "remark-frontmatter": "^1.3.0",
@@ -22,9 +28,5 @@
     "remark-react": "^4.0.3",
     "remark-slug": "^5.1.0"
   },
-  "peerDependencies": {
-    "next": "^7.0.2",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1"
-  }
+  "peerDependencies": {}
 }

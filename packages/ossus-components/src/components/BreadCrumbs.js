@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
-import styled from 'react-emotion';
-import { Routes, docs, withConfig } from 'ossus';
+import styled from '@emotion/styled';
+import { docs, withConfig } from 'ossus';
+import { Link } from 'ossus/dist/routes';
 
 import { A } from './MarkdownComponents';
 
@@ -52,19 +53,19 @@ class BreadCrumbs extends Component {
                         <OuterContainer>
                             <BreadCrumbsContainer>
                                 <BreadCrumb>
-                                    <Routes.Link route='/'>
+                                    <Link route='/'>
                                         <A>Home</A>
-                                    </Routes.Link>
+                                    </Link>
                                 </BreadCrumb>
                                 <BreadCrumb>
-                                    <Routes.Link route='docs' params={{ page: router.query.page, section: firstDoc.section,  doc: firstDoc.doc }}>
+                                    <Link route='docs' params={{ page: router.query.page, section: firstDoc.section,  doc: firstDoc.doc }}>
                                         <A>{currentPageName}</A>
-                                    </Routes.Link>
+                                    </Link>
                                 </BreadCrumb>
                                 <BreadCrumb>
-                                    <Routes.Link route='docs' params={{ page: router.query.page, section: currentDoc.section, doc: currentDoc.doc }}>
+                                    <Link route='docs' params={{ page: router.query.page, section: currentDoc.section, doc: currentDoc.doc }}>
                                         <A>{currentDoc.label}</A>
-                                    </Routes.Link>
+                                    </Link>
                                 </BreadCrumb>
                             </BreadCrumbsContainer>
                         </OuterContainer>

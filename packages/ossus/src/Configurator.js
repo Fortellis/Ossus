@@ -24,7 +24,7 @@ function withConfig(WrappedComponent) {
 
         render() {
             return (
-            <Config.Consumer>
+                <Config.Consumer>
                     {config => (
                         <WrappedComponent config={config} {...this.props} />
                     )}

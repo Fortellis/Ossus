@@ -73,9 +73,9 @@ function handleSection(path, section) {
 function handlePages() {
     let toc = {};
     // Get top level pages
-    const index = require(`${docDir}/index.json`);
+    const index = require(`${process.cwd()}/${docDir}/index.json`);
     Object.keys(index).forEach(page => {
-        const path = `${docDir}/${page}`;
+        const path = `${process.cwd()}/${docDir}/${page}`;
         if (isDir(path) && !isHidden(page)) {
             toc[page] = {
                 label: index[page].label ? index[page].label : page,
@@ -113,7 +113,7 @@ function handlePages() {
 
 function Builder() {
     fs.writeFileSync(
-        `${__dirname}/config/tableOfContents.js`,
+        `${process.cwd()}/config/tableOfContents.js`,
         `module.exports = ${JSON.stringify(handlePages(), null, 4)}`
     );
     console.log('Wrote out table of contents!')

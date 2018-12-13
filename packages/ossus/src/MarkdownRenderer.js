@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import remark from 'remark';
 import reactRenderer from 'remark-react';
 import frontmatter from 'remark-frontmatter';
@@ -8,8 +8,12 @@ import slug from 'remark-slug';
 import outerToc from 'remark-outer-toc';
 import externalLinks from 'remark-external-links';
 
-import FrontMatter from './FrontMatter';
 import { wordCount, readTime } from './utils/readTime';
+
+const headerDepth = header => {
+    if (header[0] !== 'H') return -1;
+    return header[1];
+}
 
 class MarkdownRenderer extends Component {
     state = {
@@ -56,6 +60,7 @@ class MarkdownRenderer extends Component {
 
     generateMarkdown = () => {
         const { content, menuCallback, components } = this.props;
+
         let front;
         const setFront = (x) => {
             front = x.children[0];
@@ -92,6 +97,7 @@ class MarkdownRenderer extends Component {
                 depth: 3
             })
             .processSync(content);
+            
         const frontObj = this.parseFrontMatter(front, read);
         this.setState({
             front: frontObj,
@@ -118,17 +124,16 @@ class MarkdownRenderer extends Component {
 
     render() {
         const { markdown, front } = this.state;
-        const { options, components } = this.props;
-
+        const { components, FrontMatter } = this.props;
         return (
-            <MarkdownContainer>
-                <FrontMatter
-                    frontMatter={front}
-                    options={options}
-                    H1={components.H1}
-                />
+            <>
+                { FrontMatter && (
+                    <FrontMatter
+                        frontMatter={front}
+                    />
+                )}
                 { markdown && React.cloneElement(markdown, { ref: this.setSpy }) }
-            </MarkdownContainer>
+            </>
         );
     }
 }
@@ -146,24 +151,24 @@ MarkdownRenderer.defaultProps = {
     components: {}
 }
 
-const MarkdownContainer = styled('div')`
-    @media (max-width: ${props => props.theme.size.responsive.mobile + props.theme.size.responsive.unit}) {
-        width: 100%;
-        max-width: 100%;
-    }
+// const MarkdownContainer = styled('div')`
+//     @media (max-width: ${props => props.theme.size.responsive.mobile + props.theme.size.responsive.unit}) {
+//         width: 100%;
+//         max-width: 100%;
+//     }
 
-    h2,
-    h3,
-    h4 {
-        &:before {
-            content: ' ';
-            display: block;
-            margin-top: -${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
-            height: ${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
-            visibility: hidden;
-            pointer-events: none;
-        }
-    }
-`;
+//     h2,
+//     h3,
+//     h4 {
+//         &:before {
+//             content: ' ';
+//             display: block;
+//             margin-top: -${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
+//             height: ${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
+//             visibility: hidden;
+//             pointer-events: none;
+//         }
+//     }
+// `;
  
 export default MarkdownRenderer;

@@ -8,5 +8,8 @@
     "prepare": "npm run clean; npm run build",
     "build": "babel src -d dist",
     "clean": "rm -r dist"
+  },
+  "bin": {
+    "ossus-scripts": "dist/index.js"
   }
 }

@@ -11,15 +11,13 @@
   "author": "Jared K Jones",
   "license": "ISC",
   "dependencies": {
-    "emotion": "^9.2.12",
-    "emotion-theming": "^9.2.9",
-    "polished": "^2.3.0",
-    "prop-types": "^15.6.2",
-    "react-emotion": "^9.2.12"
-  },
-  "peerDependencies": {
+    "@emotion/core": "^10.0.4",
+    "@emotion/styled": "^10.0.4",
+    "emotion-theming": "^10.0.4",
     "next": "^7.0.2",
     "ossus": "^1.0.0",
+    "polished": "^2.3.0",
+    "prop-types": "^15.6.2",
     "react": "^16.6.1",
     "react-dom": "^16.6.1"
   }

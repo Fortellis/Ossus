@@ -1,4 +1,5 @@
-import styled from 'react-emotion';
+import React from 'react';
+import styled from '@emotion/styled';
 
 const A = styled('a')`
     color: ${props => props.theme.color.primary};
@@ -109,13 +110,68 @@ const Ol = styled('ol')`
             margin: 0px;
         }
     }
-`
+`;
+
+const H1 = styled('h1')`
+    font-family: ${props => props.theme.font.family.title};
+    font-weight: ${props => props.theme.font.weight.bold};
+    color: ${props => props.theme.color.text.heading};
+`;
+
+const H2 = styled('h2')`
+    font-family: ${props => props.theme.font.family.title};
+    font-weight: ${props => props.theme.font.weight.bold};
+    color: ${props => props.theme.color.text.heading};
+
+    &:before {
+        content: ' ';
+        display: block;
+        margin-top: -${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
+        height: ${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
+        visibility: hidden;
+        pointer-events: none;
+    }
+`;
+
+const H3 = styled('h3')`
+    font-family: ${props => props.theme.font.family.title};
+    font-weight: ${props => props.theme.font.weight.semibold};
+    color: ${props => props.theme.color.text.heading};
+    
+    &:before {
+        content: ' ';
+        display: block;
+        margin-top: -${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
+        height: ${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
+        visibility: hidden;
+        pointer-events: none;
+    }
+`;
+
+const H4 = styled('h4')`
+    font-family: ${props => props.theme.font.family.title};
+    font-weight: ${props => props.theme.font.weight.bold};
+    color: ${props => props.theme.color.text.heading};
+
+    &:before {
+        content: ' ';
+        display: block;
+        margin-top: -${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
+        height: ${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit};
+        visibility: hidden;
+        pointer-events: none;
+    }
+`;
 
 export {
     A,
     P,
     Ul,
     Ol,
+    H1,
+    H2,
+    H3,
+    H4,
     Pre,
     Table,
 }

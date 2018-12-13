@@ -1,16 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import { Global, css } from '@emotion/core'
+import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
 import { ConfigProvider } from 'ossus';
 
 function Layout({ config, toc, children }) {
     return (
-        <ThemeProvider theme={config.theme}>
-            <ConfigProvider site={config.site} toc={toc}>
-                {children}
-            </ConfigProvider>
-        </ThemeProvider>
+        <>
+            <Global styles={css`
+                * {
+                    box-sizing: border-box;
+                }
+                body {
+                    margin: 0px;
+                }
+            `}/>
+            <ThemeProvider theme={config.theme}>
+                <ConfigProvider site={config.site} toc={toc}>
+                    {children}
+                </ConfigProvider>
+            </ThemeProvider>
+        </>
     );
 }
 

@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "fs-extra": "^7.0.1"
+  },
+  "bin": {
+    "create-ossus": "dist/index.js"
   }
 }

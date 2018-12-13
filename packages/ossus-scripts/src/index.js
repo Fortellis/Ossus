@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const Builder = require('./scripts/Builder');
 const args = process.argv.slice(2);
 

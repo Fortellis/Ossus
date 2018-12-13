@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Routes } from 'ossus';
 
 const Paging = ({ nextDoc, prevDoc, page }) => {
@@ -51,13 +51,13 @@ Paging.propTypes = {
         section: PropTypes.string,
         doc: PropTypes.string,
         label: PropTypes.string,
-    }).isRequired,
+    }),
     prevDoc: PropTypes.shape({
         section: PropTypes.string,
         doc: PropTypes.string,
         label: PropTypes.string,
-    }).isRequired,
-    page: PropTypes.string.isRequired,
+    }),
+    page: PropTypes.string,
 }
 
 const StyledPaging = styled('div')`
@@ -66,7 +66,7 @@ const StyledPaging = styled('div')`
     width: 100%;
     max-width: 100%;
 
-    .page-button:first-child {
+    .page-button:first-of-type {
         &.left {
             margin: 0px;
         }

@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 function toTop() {
     window.scrollTo(0,0);
 }
 
-function Menu({ menu, activeHeader }) {
+function Menu({ menu, title, activeHeader }) {
     return (
         <div>
             {
                 (menu && menu.length) ? (
                     <List>
                         <ListItem
-                            active={title === activeHeader}
                             onClick={toTop}
                             title='Return to top'
                         >
@@ -41,7 +40,7 @@ function Menu({ menu, activeHeader }) {
 };
 
 Menu.propTypes = {
-    menu: PropTypes.arrayOf(PropTypes.object).isRequired, // Requires the array of headings output from remark-outer-toc
+    menu: PropTypes.arrayOf(PropTypes.object), // Requires the array of headings output from remark-outer-toc
     activeHeader: PropTypes.string
 }
 
@@ -62,7 +61,7 @@ const List = styled('ul')`
         display: none;
     }
 
-    li:first-child {
+    li:first-of-type {
         padding-top: 0px;
     }
 

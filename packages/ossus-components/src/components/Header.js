@@ -1,5 +1,6 @@
-import { Routes } from 'ossus';
-import styled from 'react-emotion';
+import React from 'react';
+import { Routes, withConfig } from 'ossus';
+import styled from '@emotion/styled';
 import { darken } from 'polished';
 
 const Header = ({ config }) => (
@@ -7,9 +8,9 @@ const Header = ({ config }) => (
         <HeaderContainer>
             <div className='content'>
                 <div>
-                    <Link route="/">
+                    <Routes.Link route="/">
                         <PageTitle>{config.site.name}</PageTitle>
-                    </Link>
+                    </Routes.Link>
                 </div>
                 <div className='links'>
                     {
@@ -88,4 +89,4 @@ const HeaderLink = styled('a')`
     }
 `;
 
-export default Header;
+export default withConfig(Header);
