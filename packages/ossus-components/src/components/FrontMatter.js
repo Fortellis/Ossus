@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 
+import Icon from './Icon';
+
 const DEFAULT_OPTIONS = {
     title: true,
     author: true,
@@ -33,7 +35,7 @@ function FrontMatter ({ frontMatter, options }) {
                 {
                     opts.readTime && (
                         <span className='meta-data'>
-                            { window.innerWidth > 720 ? '• ' : '' }
+                            <Icon icon='clock' width={16} className='icon' />
                             {frontMatter.readTime || 0} minute read
                         </span>
                     )
@@ -73,6 +75,10 @@ const MetaData = styled('div')`
         display: flex;
         align-items: center;
         margin-left: .5em;
+
+        .icon {
+            margin-right: 5px;
+        }
 
         @media (max-width: 720px) {
             width: 100%;

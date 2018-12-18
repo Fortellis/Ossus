@@ -59,6 +59,7 @@ const DocumentLayout = styled('div')`
     
     @media (max-width: ${props => props.theme.size.responsive.mobile + props.theme.size.responsive.unit}) {
         flex-direction: column;
+        margin-top: calc(${props => props.theme.size.height.headerMobile + props.theme.size.height.breadcrumbs + props.theme.size.unit} + 1em);
     }
 `;
 

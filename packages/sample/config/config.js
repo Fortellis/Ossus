@@ -13,8 +13,8 @@ const site = {
                 section: 'overview',
                 doc: 'getting-started'
             },
-            label: 'Docs'
-        },
+            label: 'Docs Next'
+        }
     ],
     socialLinks: [{
         route: 'https://github.com/ossus',
@@ -29,7 +29,13 @@ const site = {
     }]
 }
 
-const theme = {}
+const theme = {
+    size: {
+        height: {
+            headerMobile: 90
+        }
+    }
+}
 
 export default {
     site,

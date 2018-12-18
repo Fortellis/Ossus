@@ -7,7 +7,7 @@ const Header = ({ config }) => (
     <header>
         <HeaderContainer>
             <div className='content'>
-                <div>
+                <div className='title'>
                     <Routes.Link route="/">
                         <PageTitle>{config.site.name}</PageTitle>
                     </Routes.Link>
@@ -33,16 +33,21 @@ const Header = ({ config }) => (
 const HeaderContainer = styled('div')`
     position: fixed;
     width: 100%;
-    height: ${props => props.theme.size.height.header + props.theme.size.unit};
-    background-color: ${props => props.theme.color.primary};
+    height: ${p => p.theme.size.height.header + p.theme.size.unit};
+    background-color: ${p => p.theme.header.color};
     padding: 1em 2em;
     top: 0;
     z-index: 99;
 
+    @media (max-width: 720px) {
+        height: auto;
+        padding: 0px;
+    }
+
     .content {
         display: flex;
         align-items: center;
-        max-width: ${props => props.theme.size.width.page}px;
+        max-width: ${p => p.theme.size.width.page + p.theme.size.unit};
         margin: 0 auto;
         height: 100%;
 
@@ -50,13 +55,27 @@ const HeaderContainer = styled('div')`
             margin-left: auto;
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+
+            .title {
+                width: 100%;
+                height: ${p => p.theme.size.height.headerMobile / 2 + p.theme.size.unit};
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                background-color: ${p => p.theme.header.color};
+                padding: .5em 1em;
+            }
 
             .links {
                 width: 100%;
+                height: ${p => p.theme.size.height.headerMobile / 2 + p.theme.size.unit};
+                overflow-x: auto;
+                display: flex;
+                align-items: center;
+                background-color: ${p => darken(0.1, p.theme.header.color)};
+                padding: .5em 0em;
             }
         }
     }
@@ -65,27 +84,33 @@ const HeaderContainer = styled('div')`
 `;
 
 const PageTitle = styled('a')`
-    font-family: ${props => props.theme.font.family.title};
-    font-weight: ${props => props.theme.font.weight.bold};
-    font-size: 1.5rem;
-    color: ${props => props.theme.color.fgOnPrimary};
+    font-family: ${p => p.theme.header.title.font.family};
+    font-weight: ${p => p.theme.header.title.font.weight};
+    font-size: ${p => p.theme.header.title.font.size};
+    color: ${p => p.theme.header.title.color};
     margin: 0;
 
     &:hover {
         cursor: pointer;
     }
+
+    @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
+        font-size: ${p => p.theme.header.title.font.sizeMobile};
+    }
 `;
 
 const HeaderLink = styled('a')`
-    color: ${props => props.theme.color.fgOnPrimary};
-    font-family: ${props => props.theme.font.family.body};
-    font-size: .9rem;
+    font-family: ${p => p.theme.header.link.font.family};
+    font-weight: ${p => p.theme.header.link.font.weight};
+    font-size: ${p => p.theme.header.link.font.size};
+    color: ${p => p.theme.header.link.color};
     text-decoration: none;
     padding: .5em 1em;
+    white-space: nowrap;
 
     &:hover {
         cursor: pointer;
-        color: ${props => darken(0.1, props.theme.color.fgOnPrimary)};
+        color: ${p => darken(0.1, p.theme.header.link.color)};
     }
 `;
 

@@ -31,6 +31,26 @@ function generateDefaultTheme(color, font) {
         color,
         font,
         shadow: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);',
+        header: {
+            color: color.primary,
+            title: {
+                color: color.fgOnPrimary,
+                font: {
+                    family: font.family.title,
+                    weight: font.weight.bold,
+                    size: 1.5 + font.size.unit,
+                    sizeMobile: 1.2 + font.size.unit,
+                }
+            },
+            link: {
+                color: color.fgOnPrimary,
+                font: {
+                    family: font.family.body,
+                    weight: font.weight.regular,
+                    size: .9 + font.size.unit,
+                }
+            }
+        },
         code: {
             font: {
                 size: font.size.body + font.size.unit,
@@ -111,6 +131,7 @@ function generateDefaultTheme(color, font) {
             },
             height: {
                 header: 60,
+                headerMobile: 90,
                 breadcrumbs: 0
             },
             responsive: {

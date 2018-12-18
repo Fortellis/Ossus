@@ -4,6 +4,7 @@ import Menu from './components/Menu';
 import Paging from './components/Paging';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import CodeHighlight from './components/CodeHighlight';
 import { A, P, Ul, Ol, Pre, Table, H1, H2, H3, H4 } from './components/MarkdownComponents';
 import {
     Layout,
@@ -35,7 +36,8 @@ export default {
     Paging,
     Header,
     Footer,
-    FrontMatter
+    FrontMatter,
+    CodeHighlight
 }
 
 export {
@@ -54,6 +56,7 @@ export {
     DocumentLayout,
     DocumentContent,
     TableOfContents,
+    CodeHighlight,
     Menu,
     Paging,
     Header,

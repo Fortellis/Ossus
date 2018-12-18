@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Routes } from 'ossus';
+import Icon from './Icon';
 
 const Paging = ({ nextDoc, prevDoc, page }) => {
     return (
@@ -15,7 +16,7 @@ const Paging = ({ nextDoc, prevDoc, page }) => {
                             doc: prevDoc.doc
                         }}>
                             <a>
-                                <i className='material-icons'>chevron_left</i>
+                                <Icon icon='chevron-left' />
                                 <span className='link-info'>
                                     {prevDoc.label}
                                 </span>
@@ -36,7 +37,7 @@ const Paging = ({ nextDoc, prevDoc, page }) => {
                                 <span className='link-info'>
                                     {nextDoc.label}
                                 </span>
-                                <i className='material-icons'>chevron_right</i>
+                                <Icon icon='chevron-right' />
                             </a>
                         </Routes.Link>
                     </div>

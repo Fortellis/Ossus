@@ -9,6 +9,7 @@ import Components, {
     DocumentLayout,
     DocumentContent,
     TableOfContents,
+    CodeHighlight,
     FrontMatter,
     ScrollToTop,
     Paging,
@@ -20,7 +21,7 @@ import getDoc from '../src/getDoc';
 const componentMap = {
     a: Components.primatives.A,
     p: Components.primatives.P,
-    pre: Components.primatives.Pre,
+    pre: CodeHighlight,
     table: Components.primatives.Table,
     ul: Components.primatives.Ul,
     ol: Components.primatives.Ol,
