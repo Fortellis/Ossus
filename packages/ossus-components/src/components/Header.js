@@ -68,7 +68,7 @@ const PageTitle = styled('a')`
     font-family: ${props => props.theme.font.family.title};
     font-weight: ${props => props.theme.font.weight.bold};
     font-size: 1.5rem;
-    color: ${props => props.theme.color.text.title};
+    color: ${props => props.theme.color.fgOnPrimary};
     margin: 0;
 
     &:hover {
@@ -77,7 +77,7 @@ const PageTitle = styled('a')`
 `;
 
 const HeaderLink = styled('a')`
-    color: ${props => props.theme.color.text.title};
+    color: ${props => props.theme.color.fgOnPrimary};
     font-family: ${props => props.theme.font.family.body};
     font-size: .9rem;
     text-decoration: none;
@@ -85,7 +85,7 @@ const HeaderLink = styled('a')`
 
     &:hover {
         cursor: pointer;
-        color: ${props => darken(0.1, props.theme.color.text.title)};
+        color: ${props => darken(0.1, props.theme.color.fgOnPrimary)};
     }
 `;
 

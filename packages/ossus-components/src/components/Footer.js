@@ -42,7 +42,7 @@ const Footer = ({ config }) => (
 
 const FooterContainer = styled('div')`
     width: 100%;
-    background-color: ${props => props.theme.color.backgroundDark};
+    background-color: ${props => props.theme.color.bgDark};
 `;
 
 const FooterContent = styled('div')`
@@ -103,7 +103,7 @@ const FooterContent = styled('div')`
 
 const FooterBottomBar = styled('div')`
     height: 4em;
-    background-color: ${props => lighten(0.1, props.theme.color.backgroundDark)};
+    background-color: ${props => lighten(0.1, props.theme.color.bgDark)};
 `;
 
 const FooterBottomBarContent = styled('div')`

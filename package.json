@@ -2,7 +2,10 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "prepare": "lerna bootstrap"
+    "dev": "npm run prepare; npm run exc; npm run start:sample",
+    "prepare": "lerna bootstrap",
+    "exc": "chmod +x packages/ossus-scripts/dist/index.js",
+    "start:sample": "pushd .;cd packages/sample; npm run dev; popd"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",

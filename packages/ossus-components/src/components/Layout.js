@@ -4,8 +4,19 @@ import { Global, css } from '@emotion/core'
 import styled from '@emotion/styled';
 import { ThemeProvider } from 'emotion-theming';
 import { ConfigProvider } from 'ossus';
+import {
+    generateDefaultTheme,
+    mergeThemes,
+    color,
+    font
+} from '../defaultTheme';
 
 function Layout({ config, toc, children }) {
+    const c = mergeThemes(color, config.theme.color);
+    const f = mergeThemes(font, config.theme.font);
+    const defaultTheme = generateDefaultTheme(c, f);
+    const t = mergeThemes(defaultTheme, config.theme);
+
     return (
         <>
             <Global styles={css`
@@ -16,7 +27,7 @@ function Layout({ config, toc, children }) {
                     margin: 0px;
                 }
             `}/>
-            <ThemeProvider theme={config.theme}>
+            <ThemeProvider theme={t}>
                 <ConfigProvider site={config.site} toc={toc}>
                     {children}
                 </ConfigProvider>

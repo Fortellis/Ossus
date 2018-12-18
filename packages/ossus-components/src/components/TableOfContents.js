@@ -60,7 +60,7 @@ TableOfContents.propTypes = {
 const TocContainer = styled('div')`
     min-width: ${props => props.theme.size.width.toc}px;
     max-width: ${props => props.theme.size.width.toc}px;
-    background-color: ${props => props.theme.color.grey};
+    background-color: white;
     position: sticky;
     top: calc(${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit} + 1em);
     left: 0px;
@@ -75,7 +75,7 @@ const TocContainer = styled('div')`
 
 const SectionTitle = styled('div')`
     width: 100%;
-    color: ${props => props.theme.color.text.header};
+    color: ${props => props.theme.color.primary};
     font-family: ${props => props.theme.font.family.body};
     font-weight: ${props => props.theme.font.weight.semibold};
     font-size: 1.1rem;
@@ -87,28 +87,27 @@ const SectionList = styled('ul')`
     margin: 0;
     list-style: none;
     width: 100%;
-    border-left: 1px solid #ddd;
     padding-left: 0px;
     margin: .5em 0em .5em .2em;
 
     li {
         a {
             display: block;
-            font-family: ${props => props.theme.font.family.body};
+            color: ${props => props.theme.type.p.color};
+            font-family: ${props => props.theme.type.a.font.family};
+            font-weight: ${props => props.theme.type.a.font.weight};
             font-size: .85rem;
-            font-weight: ${props => props.theme.font.weight.semibold};
-            color: ${props => props.theme.color.text.body};
             text-decoration: none;
             padding: .75em 1em;
             margin: .1em 0em;
             transform: translateX(-1px);
 
             &.highlight {
-                color: ${props => props.theme.color.text.onPrimary};
+                color: ${props => props.theme.color.fgOnPrimary};
                 background-color: ${props => props.theme.color.primary};
 
                 &:hover {
-                    color: ${props => props.theme.color.text.onPrimary};
+                    color: ${props => props.theme.color.fgOnPrimary};
                 }
             }
 

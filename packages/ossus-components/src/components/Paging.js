@@ -109,16 +109,16 @@ const StyledPaging = styled('div')`
             .link-info {
                 font-weight: ${props => props.theme.font.weight.semibold};
                 font-family: ${props => props.theme.font.family.title};
-                color: ${props => props.theme.color.text.heading};
+                color: ${props => props.theme.color.fg};
             }
 
             &:hover {
                 background-color: ${props => props.theme.color.primary};
-                color: ${props => props.theme.color.text.onPrimary};
+                color: ${props => props.theme.color.fgOnPrimary};
                 border: 1.5px solid ${props => props.theme.color.primary};
 
                 .link-info {
-                    color: ${props => props.theme.color.text.onPrimary};
+                    color: ${props => props.theme.color.fgOnPrimary};
                 }
             }
         }

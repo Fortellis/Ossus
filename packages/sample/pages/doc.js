@@ -17,6 +17,19 @@ import Components, {
 // Components
 import getDoc from '../src/getDoc';
 
+const componentMap = {
+    a: Components.primatives.A,
+    p: Components.primatives.P,
+    pre: Components.primatives.Pre,
+    table: Components.primatives.Table,
+    ul: Components.primatives.Ul,
+    ol: Components.primatives.Ol,
+    h1: Components.primatives.H1,
+    h2: Components.primatives.H2,
+    h3: Components.primatives.H3,
+    h4: Components.primatives.H4,
+}
+
 class Doc extends Component {
 
     render() {
@@ -48,7 +61,7 @@ class Doc extends Component {
                         content={content}
                         menuCallback={watchMenu}
                         watchScroll={watchScroll}
-                        components={Components.primatives}
+                        components={componentMap}
                         FrontMatter={FrontMatter}
                     />
                     <Paging

@@ -1,5 +1,6 @@
 {
     "order": [
-        "getting-started.md"
+        "getting-started.md",
+        "next-doc.md"
     ]
 }

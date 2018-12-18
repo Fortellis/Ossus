@@ -75,7 +75,7 @@ const ListItem = styled('li')`
     font-family: ${props => props.theme.font.family.body};
     font-weight: ${p => p.theme.font.weight.semibold};
     padding: 5px 0px;
-    color: ${props => props.theme.color.text.body};
+    color: ${props => props.theme.color.fg};
     padding-left: ${p => (p.depth - 2) * 15}px;
     ${p => p.active ? `
     font-weight: ${p.theme.font.weight.bold};
@@ -90,7 +90,7 @@ const ListItem = styled('li')`
     
     a {
         text-decoration: none;
-        color: ${props => props.theme.color.text.body};
+        color: ${props => props.theme.color.fg};
         ${p => p.active ? `
         font-weight: ${p.theme.font.weight.bold};
         color: ${p.theme.color.primary};

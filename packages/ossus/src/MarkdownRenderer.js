@@ -10,7 +10,7 @@ import externalLinks from 'remark-external-links';
 
 import { wordCount, readTime } from './utils/readTime';
 
-const headerDepth = header => {
+function headerDepth (header) {
     if (header[0] !== 'H') return -1;
     return header[1];
 }
@@ -52,8 +52,7 @@ class MarkdownRenderer extends Component {
         let top = e.target.scrollingElement.scrollTop;
         const above = headers.filter(head => head.top < top);
         if (above.length) {
-            this.props.watchScroll(above[above.length - 1].id);
-            return;
+            return this.props.watchScroll(above[above.length - 1].id);
         }
         this.props.watchScroll(this.state.front.title);
     }
