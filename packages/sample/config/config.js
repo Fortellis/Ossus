@@ -1,5 +1,5 @@
 const site = {
-    name: 'Next Docs',
+    name: 'Ossus',
     tagline: 'Simple yet customizable documentation sites fast',
     trademark: (<span>&#x24B8; 2018. CDK Open Source</span>),
     headerLinks: [{

@@ -44,10 +44,10 @@ class MarkdownRenderer extends Component {
     scrollSpy = e => {
         if (!this.spy) return;
         const children = Array.from(this.spy.children);
-        const boundary = headerDepth(children[0].tagName) > 0 ? 180 : 60; // magic number 🤭
+        //const boundary = headerDepth(children[0].tagName) > 0 ? 180 : 60; // magic number 🤭
         const headers = children.filter(el => headerDepth(el.tagName) > 0 && headerDepth(el.tagName) < 4).map(el => ({
             id: el.id,
-            top: el.offsetTop + this.spy.offsetTop + boundary
+            top: el.offsetTop + this.spy.offsetTop //+ boundary
         }));
         let top = e.target.scrollingElement.scrollTop;
         const above = headers.filter(head => head.top < top);
