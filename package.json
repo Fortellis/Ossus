@@ -9,8 +9,7 @@
     "dev": "npm run prepare; npm run exc; npm run start:sample",
     "exc": "chmod +x packages/ossus-scripts/dist/index.js",
     "pack-all": "lerna exec --scope *ossus* --parallel -- npm pack",
-    "postinstall": "npm run bootstrap && npm run build",
-    "prepare": "lerna bootstrap",
+    "postinstall": "npm run build",
     "start:sample": "pushd .;cd packages/sample; npm run dev; popd"
   },
   "devDependencies": {
@@ -23,8 +22,6 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
     "lerna": "^3.6.0",
-    "markdown-loader": "^4.0.0",
-    "webpack": "^4.27.1",
-    "webpack-cli": "^3.1.2"
+    "markdown-loader": "^4.0.0"
   }
 }
