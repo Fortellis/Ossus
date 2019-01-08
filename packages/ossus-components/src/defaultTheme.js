@@ -124,6 +124,7 @@ function generateDefaultTheme(color, font) {
         },
         size: {
             unit: 'px',
+            radius: '4',
             width: {
                 page: 1360,
                 toc: 260,

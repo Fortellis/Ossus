@@ -1,5 +1,8 @@
 {
-    "mydocs": {
-        "label": "My Docs"
+    "overview": {
+        "label": "Overview"
+    },
+    "api": {
+        "label": "API"
     }
 }

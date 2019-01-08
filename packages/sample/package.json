@@ -1,5 +1,5 @@
 {
-  "name": "ossus-sample",
+  "name": "sample",
   "version": "1.0.0",
   "description": "A small example site using Ossus",
   "main": "index.js",

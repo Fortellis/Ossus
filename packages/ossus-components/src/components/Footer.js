@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { lighten } from 'polished';
 import { withConfig } from 'ossus';
+import Link from './Link';
 
 const Footer = ({ config }) => (
     <FooterContainer>
@@ -14,7 +15,7 @@ const Footer = ({ config }) => (
                             {
                                 section.links.map(link => (
                                     <li key={link.label}>
-                                        <a href={link.route}>{link.label}</a>
+                                        <Link href={link.href} route={link.route} params={link.params || {}}>{link.label}</Link>
                                     </li>
                                 ))
                             }

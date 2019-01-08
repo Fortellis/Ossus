@@ -1,0 +1,7 @@
+{
+    "order": [
+        "installation.md",
+        "basics.md",
+        "configuration.md"
+    ]
+}

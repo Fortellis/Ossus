@@ -5,6 +5,10 @@ import Paging from './components/Paging';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CodeHighlight from './components/CodeHighlight';
+import Button from './components/Button';
+import Flex from './components/Flex';
+import Link from './components/Link';
+import { Title, Subtitle } from './components/Title';
 import { A, P, Ul, Ol, Pre, Table, H1, H2, H3, H4 } from './components/MarkdownComponents';
 import {
     Layout,
@@ -25,8 +29,12 @@ export default {
         H3,
         H4,
         Pre,
-        Table
+        Table,
+        Button,
     },
+    Flex,
+    Title,
+    Subtitle,
     Layout,
     ContentLayout,
     DocumentLayout,
@@ -50,6 +58,11 @@ export {
     H3,
     H4,
     Pre,
+    Button,
+    // Non-primatives
+    Flex,
+    Title,
+    Subtitle,
     Table,
     Layout,
     ContentLayout,

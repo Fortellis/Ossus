@@ -1,27 +1,29 @@
 import React from 'react';
-import { Routes, withConfig } from 'ossus';
+import { withConfig } from 'ossus';
 import styled from '@emotion/styled';
 import { darken } from 'polished';
+import Link from './Link';
 
 const Header = ({ config }) => (
     <header>
         <HeaderContainer>
             <div className='content'>
                 <div className='title'>
-                    <Routes.Link route="/">
-                        <PageTitle>{config.site.name}</PageTitle>
-                    </Routes.Link>
+                    <Link route="/" as={PageTitle}>{config.site.name}</Link>
                 </div>
                 <div className='links'>
                     {
                         config.site.headerLinks.map(link => (
-                            <Routes.Link
+                            <Link
                                 key={link.label}
+                                href={link.href}
                                 route={link.route}
                                 params={link.params}
-                                prefetch>
-                                <HeaderLink>{link.label}</HeaderLink>
-                            </Routes.Link>
+                                as={HeaderLink}
+                                prefetch
+                            >
+                                {link.label}
+                            </Link>
                         ))
                     }
                 </div>

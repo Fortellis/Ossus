@@ -5,7 +5,8 @@
     "dev": "npm run prepare; npm run exc; npm run start:sample",
     "prepare": "lerna bootstrap",
     "exc": "chmod +x packages/ossus-scripts/dist/index.js",
-    "start:sample": "pushd .;cd packages/sample; npm run dev; popd"
+    "start:sample": "pushd .;cd packages/sample; npm run dev; popd",
+    "pack-all": "lerna exec --scope *ossus* --parallel -- npm pack"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",

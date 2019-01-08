@@ -11,7 +11,6 @@ import Components, {
     TableOfContents,
     CodeHighlight,
     FrontMatter,
-    ScrollToTop,
     Paging,
     Menu
 } from 'ossus-components';
@@ -32,7 +31,6 @@ const componentMap = {
 }
 
 class Doc extends Component {
-
     render() {
         const {
             content,

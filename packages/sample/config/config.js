@@ -1,43 +1,88 @@
 const site = {
-    name: 'Ossus',
-    tagline: 'Simple yet customizable documentation sites fast',
-    trademark: (<span>&#x24B8; 2018. CDK Open Source</span>),
-    headerLinks: [{
-            route: '/',
-            label: 'Home'
-        },
-        {
-            route: 'docs',
-            params: {
-                page: 'mydocs',
-                section: 'overview',
-                doc: 'getting-started'
+        name: 'Ossus',
+        tagline: 'Simple customizable documentation sites fast',
+        trademark: ( <span> &#x24B8; 2018. CDK Open Source </span>),
+            headerLinks: [{
+                    route: 'docs',
+                    params: {
+                        page: 'overview',
+                        section: 'getting-started',
+                        doc: 'installation'
+                    },
+                    label: 'Docs'
+                },
+                {
+                    route: 'docs',
+                    params: {
+                        page: 'api',
+                        section: 'intro',
+                        doc: 'basics'
+                    },
+                    label: 'API'
+                },
+                {
+                    href: 'https://github.com',
+                    label: 'Github'
+                }
+            ],
+            socialLinks: [{
+                route: 'https://github.com/ossus',
+                label: 'Github'
+            }],
+            footerLinks: [{
+                    title: 'Docs',
+                    links: [{
+                            route: 'docs',
+                            params: {
+                                page: 'overview',
+                                section: 'getting-started',
+                                doc: 'installation'
+                            },
+                            label: 'Getting Started'
+                        },
+                        {
+                            route: 'docs',
+                            params: {
+                                page: 'overview',
+                                section: 'getting-started',
+                                doc: 'basics'
+                            },
+                            label: 'Basics'
+                        },
+                        {
+                            route: 'docs',
+                            params: {
+                                page: 'overview',
+                                section: 'getting-started',
+                                doc: 'configuration'
+                            },
+                            label: 'Configuration'
+                        }
+                    ]
+                },
+                {
+                    title: 'Social',
+                    links: [{
+                        href: 'https://github.com/cdkOpensource',
+                        label: 'Github'
+                    }]
+                }
+            ]
+        }
+
+        const theme = {
+            color: {
+                primary: '#000'
             },
-            label: 'Docs Next'
+            size: {
+                height: {
+                    header: 100,
+                    headerMobile: 90
+                }
+            }
         }
-    ],
-    socialLinks: [{
-        route: 'https://github.com/ossus',
-        label: 'Github'
-    }],
-    footerLinks: [{
-        title: 'Test Section',
-        links: [{
-            route: 'https://google.com',
-            label: 'Test Link'
-        }]
-    }]
-}
 
-const theme = {
-    size: {
-        height: {
-            headerMobile: 90
-        }
-    }
-}
-
-export default {
-    site,
-    theme
-};
+        export default {
+            site,
+            theme
+        };

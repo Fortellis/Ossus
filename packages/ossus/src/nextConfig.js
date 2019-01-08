@@ -6,7 +6,7 @@ function generatePathMap(tocs) {
     pageKeys.forEach(page => {
         tocs[page].sections.forEach(section => {
             section.children.forEach(doc => {
-                docs = addDoc(doc, `/docs/${page}/${section.route}/${doc.doc}`, {
+                docs = addDoc(docs, `/docs/${page}/${section.route}/${doc.doc}`, {
                     page: '/doc',
                     query: { page, section: section.route, doc: doc.doc }
                 });
