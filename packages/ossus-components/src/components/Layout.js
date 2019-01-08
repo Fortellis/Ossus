@@ -28,7 +28,7 @@ function Layout({ config, toc, children }) {
                 }
             `}/>
             <ThemeProvider theme={t}>
-                <ConfigProvider site={config.site} toc={toc}>
+                <ConfigProvider site={config.site} theme={t} toc={toc}>
                     {children}
                 </ConfigProvider>
             </ThemeProvider>

@@ -5,9 +5,9 @@ const Config = createContext({
     toc: {},
 });
 
-function ConfigProvider({ site, toc, children }) {
+function ConfigProvider({ site, toc, theme, children }) {
     return (
-        <Config.Provider value={{ site, toc }}>
+        <Config.Provider value={{ site, toc, theme }}>
             {children}
         </Config.Provider>
     );
