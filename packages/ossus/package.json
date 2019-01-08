@@ -6,8 +6,7 @@
   "scripts": {
     "prepare": "npm run clean; npm run build",
     "build": "babel src -d dist",
-    "clean": "rm -r dist",
-    "pack": "webpack --mode=development --config webpack.config.js"
+    "clean": "rm -r dist"
   },
   "author": "Jared K Jones",
   "license": "ISC",
