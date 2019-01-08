@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 author: Jared Jones
-last updated: today
+last updated: 1/8/2019
 ---
 
 ## Welcome to Ossus!

@@ -9,9 +9,9 @@ const site = {
         {
             route: 'docs',
             params: {
-                page: 'developer-docs',
+                page: 'example',
                 section: 'overview',
-                doc: 'about'
+                doc: 'getting-started'
             },
             label: 'Docs'
         },
@@ -20,16 +20,16 @@ const site = {
         route: 'https://github.com/ossus',
         label: 'Github'
     }],
-    footerLinks: [{}]
+    footerLinks: [{
+        title: 'Example',
+        links: [{
+            href: 'https://github.com/ossus',
+            label: 'Ossus Github'
+        }]
+    }]
 }
 
-const color = {};
-const font = {};
-
-const theme = {
-    color,
-    font,
-};
+const theme = {};
 
 export default {
     site,

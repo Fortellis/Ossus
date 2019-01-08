@@ -9,19 +9,18 @@ import Components, {
     DocumentLayout,
     DocumentContent,
     TableOfContents,
+    CodeHighlight,
     FrontMatter,
-    ScrollToTop,
     Paging,
     Menu
 } from 'ossus-components';
 // Components
 import getDoc from '../core/getDoc';
 
-// Create a mapping of components for the markdown renderer
 const componentMap = {
     a: Components.primatives.A,
     p: Components.primatives.P,
-    pre: Components.primatives.Pre,
+    pre: CodeHighlight,
     table: Components.primatives.Table,
     ul: Components.primatives.Ul,
     ol: Components.primatives.Ol,
@@ -32,7 +31,6 @@ const componentMap = {
 }
 
 class Doc extends Component {
-
     render() {
         const {
             content,
