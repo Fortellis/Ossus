@@ -10,7 +10,8 @@
     "exc": "chmod +x packages/ossus-scripts/dist/index.js",
     "pack-all": "lerna exec --scope *ossus* --parallel -- npm pack",
     "postinstall": "npm run build",
-    "start:sample": "pushd .;cd packages/sample; npm run dev; popd"
+    "start:sample": "pushd .;cd packages/sample; npm run dev; popd",
+    "update": "lerna version"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
