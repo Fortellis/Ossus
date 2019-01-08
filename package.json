@@ -2,11 +2,16 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna exec --scope *ossus* --parallel -- npm run build",
+    "clean:dist": "shx rm -rf packages/*/dist",
+    "clean:tgz": "shx rm -rf packages/*/*.tgz",
     "dev": "npm run prepare; npm run exc; npm run start:sample",
-    "prepare": "lerna bootstrap",
     "exc": "chmod +x packages/ossus-scripts/dist/index.js",
-    "start:sample": "pushd .;cd packages/sample; npm run dev; popd",
-    "pack-all": "lerna exec --scope *ossus* --parallel -- npm pack"
+    "pack-all": "lerna exec --scope *ossus* --parallel -- npm pack",
+    "postinstall": "npm run bootstrap && npm run build",
+    "prepare": "lerna bootstrap",
+    "start:sample": "pushd .;cd packages/sample; npm run dev; popd"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
