@@ -1,6 +1,6 @@
 {
   "name": "ossus-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Components for the stock Ossus docs experience",
   "main": "dist/index.js",
   "scripts": {
