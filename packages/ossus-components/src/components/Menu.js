@@ -52,7 +52,10 @@ const List = styled('ul')`
     position: sticky;
     margin-top: 0px;
     left: ${props => (props.theme.size.width.page - props.theme.size.width.menu) + props.theme.size.unit};
-    top: calc(${props => (props.theme.size.height.header + props.theme.size.height.breadcrumbs) + props.theme.size.unit} + 1em);
+    top: calc(${props => {
+        if (props.theme.header.sticky) return (props.theme.size.height.header + props.theme.size.height.breadcrumbs) + props.theme.size.unit;
+        return '0em';
+    }} + 1em);
     padding-left: 15px;
     max-height: 500px;
     overflow: auto;

@@ -52,17 +52,25 @@ FrontMatter.propTypes = {
 
 const DocTitle = styled('h1')`
     margin: 15px 0px 10px 0px;
+
+    font-size: ${p => p.theme.type.heading.one.font.size};
+    font-family: ${p => p.theme.type.heading.one.font.family};
+    font-weight: ${p => p.theme.type.heading.one.font.weight};
+    color: ${p => p.theme.type.heading.one.color};
 `;
 
 const MetaData = styled('div')`
-    color: #999;
-    font-size: .85rem;
+    color: ${p => p.theme.type.frontmatter.color};
+    font-size: ${p => p.theme.type.frontmatter.font.size};
+    font-family: ${p => p.theme.type.frontmatter.font.family};
+    font-weight: ${p => p.theme.type.frontmatter.font.weight};
+    border-bottom: 1px solid ${p => p.theme.type.frontmatter.borderColor};
+
     display: flex;
     align-items: center;
     padding-bottom: 15px;
-    border-bottom: 1px solid #ddd;
 
-    @media (max-width: 720px) {
+    @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
         flex-direction: column;
         padding-left: .5em;
     }
@@ -80,12 +88,12 @@ const MetaData = styled('div')`
             margin-right: 5px;
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
             width: 100%;
             margin-bottom: 3px;
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
             margin: 0px;
         }
 

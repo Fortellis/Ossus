@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import styled from '@emotion/styled';
-import { docs, withConfig } from 'ossus';
+import { tocUtil, withConfig } from 'ossus';
 import { Link } from 'ossus/dist/routes';
 
 import { A } from './MarkdownComponents';
@@ -20,7 +20,7 @@ class BreadCrumbs extends Component {
 
     componentDidMount() {
         const { router: { query }, config: { toc } } = this.props;
-        this.docs = docs(toc);
+        this.docs = tocUtil(toc);
         if (query.page && query.doc) {
             const currentPage = this.docs.getPage(query.page);
             this.setState({

@@ -32,6 +32,7 @@ function generateDefaultTheme(color, font) {
         font,
         shadow: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);',
         header: {
+            sticky: true,
             color: color.primary,
             title: {
                 color: color.fgOnPrimary,
@@ -62,6 +63,15 @@ function generateDefaultTheme(color, font) {
             }
         },
         type: {
+            frontmatter: {
+                color: color.fg,
+                borderColor: color.grey,
+                font: {
+                    size: font.size.body + font.size.unit,
+                    family: font.family.body,
+                    weight: font.weight.regular
+                }
+            },
             list: {
                 padLeft: '20px',
                 color: color.fg,
@@ -128,7 +138,9 @@ function generateDefaultTheme(color, font) {
             width: {
                 page: 1360,
                 toc: 260,
-                menu: 160
+                menu: 160,
+                blogSidebar: 250,
+                blog: 900,
             },
             height: {
                 header: 60,

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { lighten } from 'polished';
 
@@ -126,10 +125,10 @@ const H1 = styled('h1')`
 `;
 
 const H2 = styled('h2')`
-     font-size: ${p => p.theme.type.heading.two.font.size};
+    font-size: ${p => p.theme.type.heading.two.font.size};
     font-family: ${p => p.theme.type.heading.two.font.family};
     font-weight: ${p => p.theme.type.heading.two.font.weight};
-    color: ${p => p.theme.type.heading.one.color};
+    color: ${p => p.theme.type.heading.two.color};
 
     &:before {
         content: ' ';
@@ -174,7 +173,16 @@ const H4 = styled('h4')`
 `;
 
 const Blockquote = styled('blockquote')`
+    width: 100%;
+    padding: 1em;
+    margin: 0;
 
+    background-color: ${p => p.theme.color.bgDark};
+    border-left: 8px solid ${p => lighten(0.2, p.theme.color.bgDark)};
+
+    p {
+        color: ${p => p.theme.color.fgOnDark};
+    }
 `;
 
 export {
@@ -188,4 +196,5 @@ export {
     H4,
     Pre,
     Table,
+    Blockquote
 }

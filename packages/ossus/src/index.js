@@ -3,7 +3,7 @@ import withDoc from './withDoc';
 import generatePathMap from './nextConfig';
 import { ConfigProvider, withConfig } from './Configurator';
 import Routes from './Routes';
-import docs from './utils/docs';
+import tocUtil from './utils/tocUtil';
 
 export {
     MarkdownRenderer,
@@ -11,6 +11,6 @@ export {
     ConfigProvider,
     withConfig,
     withDoc,
+    tocUtil,
     Routes,
-    docs
 }

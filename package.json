@@ -6,7 +6,7 @@
     "build": "lerna exec --scope *ossus* --parallel -- npm run build",
     "clean:dist": "shx rm -rf packages/*/dist",
     "clean:tgz": "shx rm -rf packages/*/*.tgz",
-    "dev": "npm run prepare; npm run exc; npm run start:sample",
+    "dev": "npm run bootstrap; npm run exc; npm run start:sample",
     "exc": "chmod +x packages/ossus-scripts/dist/index.js",
     "pack-all": "lerna exec --scope *ossus* --parallel -- npm pack",
     "postinstall": "npm run build",

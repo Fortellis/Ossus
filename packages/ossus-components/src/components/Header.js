@@ -33,7 +33,7 @@ const Header = ({ config }) => (
 );
 
 const HeaderContainer = styled('div')`
-    position: fixed;
+    position: ${p => p.theme.header.sticky ? 'fixed' : 'static'};
     width: 100%;
     height: ${p => p.theme.size.height.header + p.theme.size.unit};
     background-color: ${p => p.theme.header.color};

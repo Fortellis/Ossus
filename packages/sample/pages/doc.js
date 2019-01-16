@@ -28,6 +28,7 @@ const componentMap = {
     h2: Components.primatives.H2,
     h3: Components.primatives.H3,
     h4: Components.primatives.H4,
+    blockquote: Components.primatives.Blockquote,
 }
 
 class Doc extends Component {

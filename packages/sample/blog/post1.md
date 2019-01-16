@@ -1,0 +1,7 @@
+---
+title: My First Blog Post
+last updated: today
+author: Jared Jones
+---
+
+Welcome to my new blog hosted right along side documentation with Ossus!

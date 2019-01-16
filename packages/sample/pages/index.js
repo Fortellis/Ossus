@@ -1,5 +1,5 @@
 import React from 'react';
-import { withConfig, Routes, docs } from 'ossus';
+import { withConfig, Routes, tocUtil } from 'ossus';
 import {
     DocumentLayout,
     Title,
@@ -10,7 +10,7 @@ import {
 import toc from '../config/tableOfContents';
 
 // Get all pages in the table of contents
-const homeButtonLinks = docs(toc).getTopPages();
+const homeButtonLinks = tocUtil(toc).getTopPages();
 
 function Index({ config }) {
     return (

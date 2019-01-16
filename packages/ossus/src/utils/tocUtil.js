@@ -1,7 +1,19 @@
 // Docs utility for interacting with the site structure
-function docs(tocs) {
+function tocUtil(tocs) {
+    const docToc = tocs.docs;
+    const blogToc = tocs.blog;
+
+    const getBlogPosts = () => {
+        return blogToc;
+    }
+
+    const getBlogPost = (blog) => {
+        const filter = blogToc.filter(post => post.doc === blog);
+        return filter.length ? filter[0] : undefined;
+    }
+
     const pageExists = (page) => {
-        if (tocs.hasOwnProperty(page)) {
+        if (docToc.hasOwnProperty(page)) {
             return true;
         }
         return false;
@@ -9,7 +21,7 @@ function docs(tocs) {
 
     const getPageDocs = (page) => {
         if (pageExists(page)) {
-            const contents = tocs[page].sections;
+            const contents = docToc[page].sections;
             return [].concat(...contents.map(section => {
                 return section.children.map(child => {
                     return {
@@ -47,14 +59,14 @@ function docs(tocs) {
 
     const getPage = (page) => {
         if (pageExists(page)) {
-            return tocs[page];
+            return docToc[page];
         }
         return {};
     }
 
     const getTopPages = () => {
-        return Object.keys(tocs).map(doc => {
-            const obj = tocs[doc];
+        return Object.keys(docToc).map(doc => {
+            const obj = docToc[doc];
             return {
                 title: obj.label,
                 description: obj.description || 'Generic description',
@@ -83,8 +95,11 @@ function docs(tocs) {
         // Gets the structure details for a given page (metadata, sections, documents)
         getPage,
         // Get the top level pages
-        getTopPages
+        getTopPages,
+        // Get a specific blog post
+        getBlogPost,
+        getBlogPosts
     }
 }
 
-export default docs;
+export default tocUtil;

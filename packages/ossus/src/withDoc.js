@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import docs from './utils/docs';
+import tocUtil from './utils/tocUtil';
 
 // HOC to manage the state required for the base doc component
 // Expects to be wrapped by withConfig HOC
@@ -36,7 +36,7 @@ function withDocRouting(WrappedComponent) {
 
         setPaging() {
             const { doc, page, config } = this.props;
-            this.setState({ ...docs(config.toc).getSurroundingDocs(page, doc) });
+            this.setState({ ...tocUtil(config.toc).getSurroundingDocs(page, doc) });
         }
 
         watchScroll = id => this.setState({ activeHeader: id });

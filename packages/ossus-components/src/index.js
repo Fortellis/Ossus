@@ -1,4 +1,4 @@
-
+// Docs Components
 import TableOfContents from './components/TableOfContents';
 import Menu from './components/Menu';
 import Paging from './components/Paging';
@@ -9,7 +9,7 @@ import Button from './components/Button';
 import Flex from './components/Flex';
 import Link from './components/Link';
 import { Title, Subtitle } from './components/Title';
-import { A, P, Ul, Ol, Pre, Table, H1, H2, H3, H4 } from './components/MarkdownComponents';
+import { A, P, Ul, Ol, Pre, Table, H1, H2, H3, H4, Blockquote } from './components/MarkdownComponents';
 import {
     Layout,
     ContentLayout,
@@ -17,6 +17,9 @@ import {
     DocumentContent,
 } from './components/Layout';
 import FrontMatter from './components/FrontMatter';
+// Blog Components
+import { BlogLayout, BlogContent } from './blog/Layout';
+import BlogSidebar from './blog/Sidebar';
 
 export default {
     primatives: {
@@ -31,6 +34,7 @@ export default {
         Pre,
         Table,
         Button,
+        Blockquote,
     },
     Flex,
     Title,
@@ -41,11 +45,15 @@ export default {
     DocumentContent,
     TableOfContents,
     Menu,
+    Link,
     Paging,
     Header,
     Footer,
     FrontMatter,
-    CodeHighlight
+    CodeHighlight,
+    BlogLayout,
+    BlogContent,
+    BlogSidebar,
 }
 
 export {
@@ -59,8 +67,10 @@ export {
     H4,
     Pre,
     Button,
+    Blockquote,
     // Non-primatives
     Flex,
+    Link,
     Title,
     Subtitle,
     Table,
@@ -74,5 +84,8 @@ export {
     Paging,
     Header,
     Footer,
-    FrontMatter
+    FrontMatter,
+    BlogLayout,
+    BlogContent,
+    BlogSidebar,
 }

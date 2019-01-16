@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import styled from '@emotion/styled';
 
-import { docs, withConfig } from 'ossus';
+import { tocUtil, withConfig } from 'ossus';
 import { Routes } from 'ossus';
 
 const TableOfContents = ({ config, page, router: { query } }) => {
-    const contents = docs(config.toc).getPage(page);
+    const contents = tocUtil(config.toc).getPage(page);
 
     if (!contents || !page) {
         return null;
@@ -62,7 +62,10 @@ const TocContainer = styled('div')`
     max-width: ${props => props.theme.size.width.toc}px;
     background-color: white;
     position: sticky;
-    top: calc(${props => props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit} + 1em);
+    top: calc(${props => {
+        if (props.theme.header.sticky) return props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit;
+        return '0em';
+    }} + 1em);
     left: 0px;
     margin-bottom: 1em;
 
