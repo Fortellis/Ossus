@@ -1,11 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
 import styled from '@emotion/styled';
+import { withRouter } from 'next/router';
 import { tocUtil, withConfig } from 'ossus';
-import { Link } from 'ossus/dist/routes';
+import Feather from 'feathered';
 
 import { A } from './MarkdownComponents';
+import Link from './Link';
 
 class BreadCrumbs extends Component {
     constructor(props) {
@@ -42,41 +43,47 @@ class BreadCrumbs extends Component {
     }
 
     render() {
-        const { router } = this.props;
+        const { router, divider } = this.props;
         const { firstDoc, currentDoc, currentPageName } = this.state;
 
-        /* THIS NEEDS SOME WORK, WE SHOULD WHITELIST DOCS, NOT BLACKLIST INDEX */
+        const dividerElement = divider ? divider : <Feather icon='chevron-right' />;
+
+        if (router.route !== '/doc' || currentDoc === undefined || firstDoc === undefined) return null;
+        
         return (
-            <React.Fragment>
-                {
-                    (router.route !== '/' && currentDoc !== undefined && firstDoc !== undefined) ? (
-                        <OuterContainer>
-                            <BreadCrumbsContainer>
-                                <BreadCrumb>
-                                    <Link route='/'>
-                                        <A>Home</A>
-                                    </Link>
-                                </BreadCrumb>
-                                <BreadCrumb>
-                                    <Link route='docs' params={{ page: router.query.page, section: firstDoc.section,  doc: firstDoc.doc }}>
-                                        <A>{currentPageName}</A>
-                                    </Link>
-                                </BreadCrumb>
-                                <BreadCrumb>
-                                    <Link route='docs' params={{ page: router.query.page, section: currentDoc.section, doc: currentDoc.doc }}>
-                                        <A>{currentDoc.label}</A>
-                                    </Link>
-                                </BreadCrumb>
-                            </BreadCrumbsContainer>
-                        </OuterContainer>
-                    ) : null
-                }
-            </React.Fragment>
+            <OuterContainer>
+                <BreadCrumbsContainer>
+                    <BreadCrumb>
+                        <Link route='/' as={A}>Home</Link>
+                    </BreadCrumb>
+                    <Divider>{ dividerElement }</Divider>
+                    <BreadCrumb>
+                        <Link
+                            route='docs'
+                            params={{ page: router.query.page, section: firstDoc.section,  doc: firstDoc.doc }}
+                            as={A}
+                        >
+                            {currentPageName}
+                        </Link>
+                    </BreadCrumb>
+                    <Divider>{ dividerElement }</Divider>
+                    <BreadCrumb>
+                        <Link
+                            route='docs'
+                            params={{ page: router.query.page, section: currentDoc.section, doc: currentDoc.doc }}
+                            as={A}
+                        >
+                            {currentDoc.label}
+                        </Link>
+                    </BreadCrumb>
+                </BreadCrumbsContainer>
+            </OuterContainer>
         );
     }
 }
 
 BreadCrumbs.propTypes = {
+    divider: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     router: PropTypes.object.isRequired,   // BreadCrumbs depends on the router to define it's own state
     config: PropTypes.shape({
         site: PropTypes.object,
@@ -85,15 +92,20 @@ BreadCrumbs.propTypes = {
 };
 
 const OuterContainer = styled('div')`
-    background-color: white;
     width: 100%;
     max-width: 100%;
-    position: fixed;
-    top: ${props => props.theme.size.height.header}px;
     z-index: 99;
-    box-shadow: 0px 2px 5px rgba(0,0,0,.2);
+    box-shadow: ${p => p.theme.shadow};
+    top: 0;
 
-    @media (max-width: 720px) {
+    background-color: ${p => p.theme.breadcrumbs.color.bg};
+    position: ${p => p.theme.header.sticky ? 'fixed' : 'static'};
+    margin-top: calc(${props => {
+        if (props.theme.header.sticky) return props.theme.size.height.header + props.theme.size.unit;
+        return '0em';
+    }});
+
+    @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
         display: flex;
         justify-content: center;
     }
@@ -101,43 +113,49 @@ const OuterContainer = styled('div')`
 
 const BreadCrumbsContainer = styled('div')`
     margin: 0px auto;
-    height: ${props => props.theme.size.height.breadcrumbs}px;
-    width: ${props => props.theme.size.width.page}px;
     display: flex;
     align-items: center;
     overflow: auto;
 
-    @media (max-width: ${props => props.theme.size.width.page}px) {
+    height: ${props => props.theme.size.height.breadcrumbs + props.theme.size.unit};
+    width: ${props => props.theme.size.width.page + props.theme.size.unit};
+
+    .feather {
+        height: ${p => p.theme.breadcrumbs.font.size};
+        font-size: ${p => p.theme.breadcrumbs.font.size};
+        color: ${p => p.theme.breadcrumbs.color.fg};
+    }
+
+    @media (max-width: ${props => props.theme.size.width.page + props.theme.size.unit}) {
         padding: 0em 2em;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
         justify-content: center;
         width: 90%;
         max-width: 90%;
         margin: 0;
         padding: 0;
     }
-
-    div:last-child {
-        &:after {
-            content: '';
-            margin: 0px;
-        }
-    }
 `;
 
 const BreadCrumb = styled('div')`
-    &:after {
-        content: '/';
-        margin: 0px 8px;
-    }
-
     a {
-        color: #000;
-        font-size: .9rem;
         white-space: nowrap;
+
+        color: ${p => p.theme.breadcrumbs.color.fg};
+        font-size: ${p => p.theme.breadcrumbs.font.size};
+        font-family: ${p => p.theme.breadcrumbs.font.family};
+        font-weight: ${p => p.theme.breadcrumbs.font.weight};
     }
+`;
+
+const Divider = styled('span')`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: ${p => `0em ${p.theme.breadcrumbs.spacing}`};
 `;
  
 export default withConfig(withRouter(BreadCrumbs));

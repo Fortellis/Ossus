@@ -62,6 +62,18 @@ function generateDefaultTheme(color, font) {
                 blockBg: color.bgDark,
             }
         },
+        breadcrumbs: {
+            spacing: '10px',
+            color: {
+                bg: color.bg,
+                fg: color.fg
+            },
+            font: {
+                size: font.size.body + font.size.unit,
+                family: font.family.body,
+                weight: font.weight.regular
+            }
+        },
         type: {
             frontmatter: {
                 color: color.fg,

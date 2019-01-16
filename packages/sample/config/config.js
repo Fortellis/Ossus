@@ -77,11 +77,12 @@ const site = {
             size: {
                 height: {
                     header: 100,
-                    headerMobile: 90
+                    headerMobile: 90,
+                    breadcrumbs: 50,
                 }
             },
             header: {
-                
+                sticky: true
             }
         }
 

@@ -1,5 +1,6 @@
 // Docs Components
 import TableOfContents from './components/TableOfContents';
+import BreadCrumbs from './components/BreadCrumbs';
 import Menu from './components/Menu';
 import Paging from './components/Paging';
 import Header from './components/Header';
@@ -40,6 +41,7 @@ export default {
     Title,
     Subtitle,
     Layout,
+    BreadCrumbs,
     ContentLayout,
     DocumentLayout,
     DocumentContent,
@@ -75,6 +77,7 @@ export {
     Subtitle,
     Table,
     Layout,
+    BreadCrumbs,
     ContentLayout,
     DocumentLayout,
     DocumentContent,

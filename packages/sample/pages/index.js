@@ -24,7 +24,7 @@ function Index({ config }) {
                 <Subtitle>{config.site.tagline}</Subtitle>
                 <Flex margin='2em 0em 1em 0em'>
                     {homeButtonLinks.map(button => (
-                        <ButtonLink link={button.link}>{button.title}</ButtonLink>
+                        <ButtonLink link={button.link} key={button.link}>{button.title}</ButtonLink>
                     ))}
                 </Flex>
             </Flex>

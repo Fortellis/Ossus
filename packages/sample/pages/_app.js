@@ -1,6 +1,7 @@
 import App, { Container } from 'next/app';
 import React from 'react';
 import {
+    BreadCrumbs,
     Layout,
     ContentLayout,
     Header,
@@ -26,6 +27,7 @@ export default class MyApp extends App {
         <Container>
             <Layout config={config} toc={toc}>
                 <Header />
+                <BreadCrumbs />
                 <ContentLayout>
                     <Component {...pageProps} />
                 </ContentLayout>
