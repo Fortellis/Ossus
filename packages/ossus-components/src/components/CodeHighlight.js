@@ -8,8 +8,8 @@ SyntaxHighlighter.registerLanguage('javascript', js);
 SyntaxHighlighter.registerLanguage('bash', bash);
 SyntaxHighlighter.registerLanguage('json', json);
 
-function CodeHighlight(props) {
-    const realProps = props.children[0].props;
+function CodeHighlight({ children, theme }) {
+    const realProps = children[0].props;
     const getLang = () => {
         if (realProps.className) {
             return realProps.className.split('-')[1];
@@ -19,7 +19,7 @@ function CodeHighlight(props) {
     return (
         <SyntaxHighlighter
             language={getLang()}
-            style={def}
+            style={theme || def}
         >
             {realProps.children[0]}
         </SyntaxHighlighter>

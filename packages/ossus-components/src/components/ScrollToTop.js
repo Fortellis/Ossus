@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { darken } from 'polished';
+import Feather from 'feathered';
 
 
 class ScrollToTop extends Component {
@@ -37,7 +38,7 @@ class ScrollToTop extends Component {
                 onClick={() => window.scrollTo(0,0)}
                 title='Scroll to top'
             >
-                <i className='material-icons'>keyboard_arrow_up</i>
+                <Feather icon='chevron-up' />
             </ScrollButton>
         );
     }

@@ -6,6 +6,7 @@ import {
     withDoc
 } from 'ossus';
 import Components, {
+    ScrollToTop,
     DocumentLayout,
     DocumentContent,
     TableOfContents,
@@ -54,27 +55,31 @@ class Doc extends Component {
         }
         // Standard layout of a Ossus project UI
         return (
-            <DocumentLayout>
-                <TableOfContents page={page} />
-                <DocumentContent>
-                    <MarkdownRenderer
-                        content={content}
-                        menuCallback={watchMenu}
-                        watchScroll={watchScroll}
-                        components={componentMap}
-                        FrontMatter={FrontMatter}
+            <>
+                <DocumentLayout>
+                    <TableOfContents page={page} />
+                    <DocumentContent>
+                        <MarkdownRenderer
+                            content={content}
+                            menuCallback={watchMenu}
+                            watchScroll={watchScroll}
+                            components={componentMap}
+                            FrontMatter={FrontMatter}
+                        />
+                        <Paging
+                            nextDoc={nextDoc}
+                            prevDoc={prevDoc}
+                            page={page}
+                        />
+                    </DocumentContent>
+                    <Menu
+                        menu={menu}
+                        activeHeader={activeHeader}
                     />
-                    <Paging
-                        nextDoc={nextDoc}
-                        prevDoc={prevDoc}
-                        page={page}
-                    />
-                </DocumentContent>
-                <Menu
-                    menu={menu}
-                    activeHeader={activeHeader}
-                />
-            </DocumentLayout>
+                    
+                </DocumentLayout>
+                <ScrollToTop />
+            </>
         );
     }
 }

@@ -6,6 +6,7 @@ import Paging from './components/Paging';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CodeHighlight from './components/CodeHighlight';
+import ScrollToTop from './components/ScrollToTop';
 import Button from './components/Button';
 import Flex from './components/Flex';
 import Link from './components/Link';
@@ -46,6 +47,7 @@ export default {
     DocumentLayout,
     DocumentContent,
     TableOfContents,
+    ScrollToTop,
     Menu,
     Link,
     Paging,
@@ -83,6 +85,7 @@ export {
     DocumentContent,
     TableOfContents,
     CodeHighlight,
+    ScrollToTop,
     Menu,
     Paging,
     Header,

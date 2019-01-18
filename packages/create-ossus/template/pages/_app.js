@@ -1,8 +1,9 @@
 import App, { Container } from 'next/app';
 import React from 'react';
 import {
-    Layout,
     ContentLayout,
+    BreadCrumbs,
+    Layout,
     Header,
     Footer
 } from 'ossus-components';
@@ -26,6 +27,7 @@ export default class MyApp extends App {
         <Container>
             <Layout config={config} toc={toc}>
                 <Header />
+                <BreadCrumbs />
                 <ContentLayout>
                     <Component {...pageProps} />
                 </ContentLayout>

@@ -10,13 +10,5 @@ module.exports = {
         });
         return config;
     },
-    exportPathMap: async function() {
-        return {
-            // Add your pages
-            '/': { page: '/' },
-            '/404': { page: '/_error' },
-            // Adding dynamically generated paths for docs
-            ...generatePathMap(toc)
-        }
-    }
+    exportPathMap: generatePathMap(toc)
 };
