@@ -10,7 +10,7 @@ const Flex = styled('div')`
     padding: ${p => p.padding || '0em'};
     margin: ${p => p.margin || '0em'};
 
-    ${p => p.fill ? `
+    ${p => p.fillParent ? `
         width: 100%;
         height: 100%;
     `: ''}

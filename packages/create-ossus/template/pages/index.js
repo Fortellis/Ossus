@@ -1,10 +1,11 @@
 import React from 'react';
-import { withConfig, Routes, tocUtil } from 'ossus';
+import { withConfig, tocUtil } from 'ossus';
 import {
     DocumentLayout,
-    Title,
     Subtitle,
     Button,
+    Title,
+    Link,
     Flex
 } from 'ossus-components';
 import toc from '../config/tableOfContents';
@@ -18,25 +19,25 @@ function Index({ config }) {
             <Flex
                 dir='column'
                 margin='1em 0em 3em 0em'
-                fill
+                fillParent
             >
                 <Title>{config.site.name}</Title>
                 <Subtitle>{config.site.tagline}</Subtitle>
                 <Flex margin='2em 0em 1em 0em'>
                     {homeButtonLinks.map(button => (
-                        <ButtonLink link={button.link}>{button.title}</ButtonLink>
+                        <Link
+                            route={button.link.route}
+                            params={button.link.params}
+                            margin='0em .5em'
+                            key={button.link}
+                            as={Button}
+                        >
+                            {button.title}
+                        </Link>
                     ))}
                 </Flex>
             </Flex>
         </DocumentLayout>
-    );
-}
-
-function ButtonLink({ children, link, ...rest }) {
-    return (
-        <Routes.Link route={link.route} params={link.params} {...rest}>
-            <Button as='a' margin='0em .5em'>{ children }</Button>
-        </Routes.Link>
     );
 }
 
