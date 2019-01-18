@@ -3,46 +3,46 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 function toTop() {
-    window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
-function Menu({ menu, title, activeHeader }) {
-    return (
-        <div>
+function Menu({ menu, activeHeader }) {
+  return (
+    <div>
+      {
+        (menu && menu.length) ? (
+          <List>
+            <ListItem
+              onClick={toTop}
+              title='Return to top'
+            >
+              CONTENTS
+            </ListItem>
             {
-                (menu && menu.length) ? (
-                    <List>
-                        <ListItem
-                            onClick={toTop}
-                            title='Return to top'
-                        >
-                            CONTENTS
-                        </ListItem>
-                        {
-                            menu.map(item => (
-                                    <ListItem
-                                        key={item.id}
-                                        active={item.id === activeHeader}
-                                        depth={item.depth}
-                                    >
-                                        <a href={`#${item.id}`} >
-                                            {item.value}
-                                        </a>
-                                    </ListItem>
-                                )
-                            )
-                        }
-                    </List>
-                ) : ( <List></List> )
+              menu.map(item => (
+                <ListItem
+                  key={item.id}
+                  active={item.id === activeHeader}
+                  depth={item.depth}
+                >
+                  <a href={`#${item.id}`} >
+                    {item.value}
+                  </a>
+                </ListItem>
+              )
+              )
             }
-        </div>
-    )
-};
+          </List>
+        ) : (<List></List>)
+      }
+    </div>
+  );
+}
 
 Menu.propTypes = {
-    menu: PropTypes.arrayOf(PropTypes.object), // Requires the array of headings output from remark-outer-toc
-    activeHeader: PropTypes.string
-}
+  menu: PropTypes.arrayOf(PropTypes.object), // Requires the array of headings output from remark-outer-toc
+  activeHeader: PropTypes.string
+};
 
 const List = styled('ul')`
     max-width: ${props => props.theme.size.width.menu + props.theme.size.unit};
@@ -53,9 +53,9 @@ const List = styled('ul')`
     margin-top: 0px;
     left: ${props => (props.theme.size.width.page - props.theme.size.width.menu) + props.theme.size.unit};
     top: calc(${props => {
-        if (props.theme.header.sticky) return (props.theme.size.height.header + props.theme.size.height.breadcrumbs) + props.theme.size.unit;
-        return '0em';
-    }} + 1em);
+    if (props.theme.header.sticky) return (props.theme.size.height.header + props.theme.size.height.breadcrumbs) + props.theme.size.unit;
+    return '0em';
+  }} + 1em);
     padding-left: 15px;
     max-height: 500px;
     overflow: auto;

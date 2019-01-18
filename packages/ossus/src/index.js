@@ -6,11 +6,11 @@ import Routes from './Routes';
 import tocUtil from './utils/tocUtil';
 
 export {
-    MarkdownRenderer,
-    generatePathMap,
-    ConfigProvider,
-    withConfig,
-    withDoc,
-    tocUtil,
-    Routes,
-}
+  MarkdownRenderer,
+  generatePathMap,
+  ConfigProvider,
+  withConfig,
+  withDoc,
+  tocUtil,
+  Routes,
+};

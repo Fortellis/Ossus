@@ -9,86 +9,86 @@ import { A } from './MarkdownComponents';
 import Link from './Link';
 
 class BreadCrumbs extends Component {
-    constructor(props) {
-        super(props);
-        this.docs;
-        this.state = {
-            currentPageName: '',
-            currentDoc: undefined,
-            firstDoc: undefined,
-        }
+  constructor(props) {
+    super(props);
+    this.docs;
+    this.state = {
+      currentPageName: '',
+      currentDoc: undefined,
+      firstDoc: undefined,
+    };
+  }
+
+  componentDidMount() {
+    const { router: { query }, config: { toc } } = this.props;
+    this.docs = tocUtil(toc);
+    if (query.page && query.doc) {
+      const currentPage = this.docs.getPage(query.page);
+      this.setState({
+        currentPageName: currentPage ? currentPage.label : '',
+        currentDoc: this.docs.getDoc(query.page, query.doc),
+        firstDoc: this.docs.getFirstDoc(query.page)
+      });
     }
+  }
 
-    componentDidMount() {
-        const { router: { query }, config: { toc } } = this.props;
-        this.docs = tocUtil(toc);
-        if (query.page && query.doc) {
-            const currentPage = this.docs.getPage(query.page);
-            this.setState({
-                currentPageName: currentPage ? currentPage.label : '',
-                currentDoc: this.docs.getDoc(query.page, query.doc),
-                firstDoc: this.docs.getFirstDoc(query.page)
-            });
-        }
+  componentDidUpdate(prevProps) {
+    const { router: { query } } = this.props;
+    if (prevProps.router.query !== query) {
+      this.setState({
+        currentDoc: this.docs.getDoc(query.page, query.doc),
+        firstDoc: this.docs.getFirstDoc(query.page)
+      });
     }
+  }
 
-    componentDidUpdate(prevProps) {
-        const { router: { query } } = this.props;
-        if (prevProps.router.query !== query) {
-            this.setState({
-                currentDoc: this.docs.getDoc(query.page, query.doc),
-                firstDoc: this.docs.getFirstDoc(query.page)
-            });
-        }
-    }
+  render() {
+    const { router, divider } = this.props;
+    const { firstDoc, currentDoc, currentPageName } = this.state;
 
-    render() {
-        const { router, divider } = this.props;
-        const { firstDoc, currentDoc, currentPageName } = this.state;
+    const dividerElement = divider ? divider : <Feather icon='chevron-right' />;
 
-        const dividerElement = divider ? divider : <Feather icon='chevron-right' />;
+    if (router.route !== '/doc' || currentDoc === undefined || firstDoc === undefined) return null;
 
-        if (router.route !== '/doc' || currentDoc === undefined || firstDoc === undefined) return null;
-        
-        return (
-            <OuterContainer>
-                <BreadCrumbsContainer>
-                    <BreadCrumb>
-                        <Link route='/' as={A}>Home</Link>
-                    </BreadCrumb>
-                    <Divider>{ dividerElement }</Divider>
-                    <BreadCrumb>
-                        <Link
-                            route='docs'
-                            params={{ page: router.query.page, section: firstDoc.section,  doc: firstDoc.doc }}
-                            as={A}
-                        >
-                            {currentPageName}
-                        </Link>
-                    </BreadCrumb>
-                    <Divider>{ dividerElement }</Divider>
-                    <BreadCrumb>
-                        <Link
-                            route='docs'
-                            params={{ page: router.query.page, section: currentDoc.section, doc: currentDoc.doc }}
-                            as={A}
-                        >
-                            {currentDoc.label}
-                        </Link>
-                    </BreadCrumb>
-                </BreadCrumbsContainer>
-            </OuterContainer>
-        );
-    }
+    return (
+      <OuterContainer>
+        <BreadCrumbsContainer>
+          <BreadCrumb>
+            <Link route='/' as={A}>Home</Link>
+          </BreadCrumb>
+          <Divider>{dividerElement}</Divider>
+          <BreadCrumb>
+            <Link
+              route='docs'
+              params={{ page: router.query.page, section: firstDoc.section, doc: firstDoc.doc }}
+              as={A}
+            >
+              {currentPageName}
+            </Link>
+          </BreadCrumb>
+          <Divider>{dividerElement}</Divider>
+          <BreadCrumb>
+            <Link
+              route='docs'
+              params={{ page: router.query.page, section: currentDoc.section, doc: currentDoc.doc }}
+              as={A}
+            >
+              {currentDoc.label}
+            </Link>
+          </BreadCrumb>
+        </BreadCrumbsContainer>
+      </OuterContainer>
+    );
+  }
 }
 
 BreadCrumbs.propTypes = {
-    divider: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-    router: PropTypes.object.isRequired,   // BreadCrumbs depends on the router to define it's own state
-    config: PropTypes.shape({
-        site: PropTypes.object,
-        toc: PropTypes.object
-    }).isRequired     // BreadCrumbs needs the toc structure to create links
+  divider: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  router: PropTypes.object.isRequired,   // BreadCrumbs depends on the router to define it's own state
+  config: PropTypes.shape({
+    site: PropTypes.object,
+    toc: PropTypes.object
+  }).isRequired     // BreadCrumbs needs the toc structure to create links
 };
 
 const OuterContainer = styled('div')`
@@ -101,15 +101,15 @@ const OuterContainer = styled('div')`
     background-color: ${p => p.theme.breadcrumbs.color.bg};
     position: ${p => p.theme.header.sticky ? 'fixed' : 'static'};
     margin-top: calc(${props => {
-        if (props.theme.header.sticky) return props.theme.size.height.header + props.theme.size.unit;
-        return '0em';
-    }});
+    if (props.theme.header.sticky) return props.theme.size.height.header + props.theme.size.unit;
+    return '0em';
+  }});
 
     @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
         display: flex;
         justify-content: center;
     }
-`
+`;
 
 const BreadCrumbsContainer = styled('div')`
     margin: 0px auto;
@@ -157,5 +157,5 @@ const Divider = styled('span')`
     
     margin: ${p => `0em ${p.theme.breadcrumbs.spacing}`};
 `;
- 
+
 export default withConfig(withRouter(BreadCrumbs));

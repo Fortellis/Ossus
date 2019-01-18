@@ -5,43 +5,43 @@ import Feather from 'feathered';
 
 
 class ScrollToTop extends Component {
-    state = {
+  state = {
+    visible: false
+  };
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = (e) => {
+    const threshold = 100;
+    const scrollTop = e.pageY;
+    if (scrollTop > threshold && !this.state.visible) {
+      this.setState({
+        visible: true
+      });
+    } else if (scrollTop < threshold && this.state.visible) {
+      this.setState({
         visible: false
+      });
     }
+  };
 
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    handleScroll = (e) => {
-        const threshold = 100;
-        const scrollTop = e.pageY;
-        if (scrollTop > threshold && !this.state.visible) {
-            this.setState({
-                visible: true
-            });
-        } else if (scrollTop < threshold && this.state.visible) {
-            this.setState({
-                visible: false
-            });
-        }
-    }
-    
-    render() {
-        return (
-            <ScrollButton
-                visible={this.state.visible}
-                onClick={() => window.scrollTo(0,0)}
-                title='Scroll to top'
-            >
-                <Feather icon='chevron-up' />
-            </ScrollButton>
-        );
-    }
+  render() {
+    return (
+      <ScrollButton
+        visible={this.state.visible}
+        onClick={() => window.scrollTo(0, 0)}
+        title='Scroll to top'
+      >
+        <Feather icon='chevron-up' />
+      </ScrollButton>
+    );
+  }
 }
 
 const ScrollButton = styled('button')`

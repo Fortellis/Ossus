@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "lint": "lerna run lint",
     "build": "lerna exec --scope *ossus* --parallel -- npm run build",
     "clean:dist": "shx rm -rf packages/*/dist",
     "clean:tgz": "shx rm -rf packages/*/*.tgz",
@@ -21,6 +22,10 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-react": "^7.12.4",
     "lerna": "^3.6.0",
     "markdown-loader": "^4.0.0"
   }

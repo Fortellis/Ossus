@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { withConfig } from 'ossus';
@@ -6,34 +5,34 @@ import { withConfig } from 'ossus';
 import Link from '../components/Link';
 
 function BlogSidebar({ config, title, limit }) {
-    const blogs = config.toc.blog.slice(0, limit);
-    return (
-        <Sidebar>
-            <SidebarTitle>{title}</SidebarTitle>
-            <SidebarItems>
-                { blogs.map(post => (
-                    <SidebarItem key={post.doc}>
-                        <Link route='blog' params={{ post: post.doc }}>{post.label}</Link>
-                    </SidebarItem>
-                ))}
-            </SidebarItems>
-        </Sidebar>
-    );
+  const blogs = config.toc.blog.slice(0, limit);
+  return (
+    <Sidebar>
+      <SidebarTitle>{title}</SidebarTitle>
+      <SidebarItems>
+        {blogs.map(post => (
+          <SidebarItem key={post.doc}>
+            <Link route='blog' params={{ post: post.doc }}>{post.label}</Link>
+          </SidebarItem>
+        ))}
+      </SidebarItems>
+    </Sidebar>
+  );
 }
 
 BlogSidebar.propTypes = {
-    config: PropTypes.shape({
-        site: PropTypes.object,
-        toc: PropTypes.object
-    }).isRequired,
-    title: PropTypes.string,
-    limit: PropTypes.number,
+  config: PropTypes.shape({
+    site: PropTypes.object,
+    toc: PropTypes.object
+  }).isRequired,
+  title: PropTypes.string,
+  limit: PropTypes.number,
 };
 
 BlogSidebar.defaultProps = {
-    title: 'Recent Posts',
-    limit: 10,
-}
+  title: 'Recent Posts',
+  limit: 10,
+};
 
 const Sidebar = styled('nav')`
     width: ${p => p.theme.size.width.blogSidebar + p.theme.size.unit};

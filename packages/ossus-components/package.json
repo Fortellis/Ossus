@@ -1,12 +1,13 @@
 {
   "name": "ossus-components",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Components for the stock Ossus docs experience",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "npm run clean; npm run build",
     "build": "babel src -d dist",
-    "clean": "rm -r dist"
+    "clean": "rm -r dist",
+    "lint": "eslint ./src"
   },
   "author": "Jared K Jones",
   "license": "ISC",
