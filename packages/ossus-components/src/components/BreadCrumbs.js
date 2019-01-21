@@ -92,70 +92,70 @@ BreadCrumbs.propTypes = {
 };
 
 const OuterContainer = styled('div')`
-    width: 100%;
-    max-width: 100%;
-    z-index: 99;
-    box-shadow: ${p => p.theme.shadow};
-    top: 0;
+  width: 100%;
+  max-width: 100%;
+  z-index: 99;
+  top: 0;
 
-    background-color: ${p => p.theme.breadcrumbs.color.bg};
-    position: ${p => p.theme.header.sticky ? 'fixed' : 'static'};
-    margin-top: calc(${props => {
+  border-bottom: 1px solid ${p => p.theme.color.grey};
+  background-color: ${p => p.theme.breadcrumbs.color.bg};
+  position: ${p => p.theme.header.sticky ? 'fixed' : 'static'};
+  margin-top: calc(${props => {
     if (props.theme.header.sticky) return props.theme.size.height.header + props.theme.size.unit;
     return '0em';
   }});
 
-    @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
-        display: flex;
-        justify-content: center;
-    }
+  @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const BreadCrumbsContainer = styled('div')`
-    margin: 0px auto;
-    display: flex;
-    align-items: center;
-    overflow: auto;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  overflow: auto;
 
-    height: ${props => props.theme.size.height.breadcrumbs + props.theme.size.unit};
-    width: ${props => props.theme.size.width.page + props.theme.size.unit};
+  height: ${props => props.theme.size.height.breadcrumbs + props.theme.size.unit};
+  width: ${props => props.theme.size.width.page + props.theme.size.unit};
 
-    .feather {
-        height: ${p => p.theme.breadcrumbs.font.size};
-        font-size: ${p => p.theme.breadcrumbs.font.size};
-        color: ${p => p.theme.breadcrumbs.color.fg};
-    }
+  .feather {
+    height: ${p => p.theme.breadcrumbs.font.size};
+    font-size: ${p => p.theme.breadcrumbs.font.size};
+    color: ${p => p.theme.breadcrumbs.color.fg};
+  }
 
-    @media (max-width: ${props => props.theme.size.width.page + props.theme.size.unit}) {
-        padding: 0em 2em;
-    }
+  @media (max-width: ${props => props.theme.size.width.page + props.theme.size.unit}) {
+    padding: 0em 2em;
+  }
 
-    @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
-        justify-content: center;
-        width: 90%;
-        max-width: 90%;
-        margin: 0;
-        padding: 0;
-    }
+  @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
+    justify-content: center;
+    width: 90%;
+    max-width: 90%;
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const BreadCrumb = styled('div')`
-    a {
-        white-space: nowrap;
+  a {
+    white-space: nowrap;
 
-        color: ${p => p.theme.breadcrumbs.color.fg};
-        font-size: ${p => p.theme.breadcrumbs.font.size};
-        font-family: ${p => p.theme.breadcrumbs.font.family};
-        font-weight: ${p => p.theme.breadcrumbs.font.weight};
-    }
+    color: ${p => p.theme.breadcrumbs.color.fg};
+    font-size: ${p => p.theme.breadcrumbs.font.size};
+    font-family: ${p => p.theme.breadcrumbs.font.family};
+    font-weight: ${p => p.theme.breadcrumbs.font.weight};
+  }
 `;
 
 const Divider = styled('span')`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    margin: ${p => `0em ${p.theme.breadcrumbs.spacing}`};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin: ${p => `0em ${p.theme.breadcrumbs.spacing}`};
 `;
 
 export default withConfig(withRouter(BreadCrumbs));

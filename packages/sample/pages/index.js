@@ -18,7 +18,7 @@ function Index({ config }) {
             <Flex
                 dir='column'
                 margin='1em 0em 3em 0em'
-                fill
+                fillParent
             >
                 <Title>{config.site.name}</Title>
                 <Subtitle>{config.site.tagline}</Subtitle>

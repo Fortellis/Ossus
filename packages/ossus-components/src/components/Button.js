@@ -5,10 +5,12 @@ const Button = styled('button')`
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  transition: background-color .25s ease, color .2s ease;
+
   padding: ${p => p.padding || '1em 2em'};
   margin: ${p => p.margin || '0em'};
-
-  transition: background-color .25s ease, color .2s ease;
+  width: ${p => p.width || 'auto'};
+  height: ${p => p.height || 'auto'};
 
   color: ${p => p.theme.color.primary};
   background-color: ${p => p.theme.color.bg};

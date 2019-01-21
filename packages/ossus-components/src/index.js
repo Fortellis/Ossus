@@ -1,5 +1,5 @@
 // Docs Components
-import TableOfContents from './components/TableOfContents';
+import TableOfContents from './docs/TableOfContents';
 import BreadCrumbs from './components/BreadCrumbs';
 import Menu from './components/Menu';
 import Paging from './components/Paging';

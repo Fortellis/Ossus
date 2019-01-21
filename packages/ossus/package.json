@@ -1,6 +1,6 @@
 {
   "name": "ossus",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "A customizable documentation framework built on next js",
   "main": "dist/index.js",
   "scripts": {

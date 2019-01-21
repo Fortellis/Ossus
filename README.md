@@ -8,7 +8,7 @@ Ossus is a framework for building documentation sites that focuses on being:
 
 ## Built with
 
-- **Next.js**: Ossus is built on top of [Next.js]() to give you powerful SSR and static site exporting.
+- **Next.js**: Ossus is built on top of [Next.js](https://nextjs.org/) to give you powerful SSR and static site exporting.
 - **React**: Ossus is built with React so all of your knowledge about building UI's transfers.
 - **Markdown**: Ossus renders markdown files into JSX so your site can look great without you having to code each page.
 
@@ -32,8 +32,8 @@ We built Ossus because we couldn't find a framework out there that perfectly fit
 
 ### Code of Conduct
 
-We have adopted a Code of Conduct that we expect all contributors to adhere to. Please read the [code of conduct](/CODE_OF_CONDUCT.md) before contributing so that you know what is allowed as a part of this community.
+We have adopted a Code of Conduct that we expect all contributors to adhere to. Please read the [code of conduct](https://github.com/FortellisDev/Ossus/blob/master/CODE_OF_CONDUCT.md) before contributing so that you know what is allowed as a part of this community.
 
 ## License
 
-Ossus is [MIT Licensed](/LICENSE)
+Ossus is [MIT Licensed](https://github.com/FortellisDev/Ossus/blob/master/LICENSE)

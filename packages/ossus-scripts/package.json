@@ -1,7 +1,7 @@
 {
   "name": "ossus-scripts",
   "author": "Jared K Jones",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "Build scripts for Ossus documentation Framework",
   "main": "dist/index.js",
   "scripts": {

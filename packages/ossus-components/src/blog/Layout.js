@@ -5,9 +5,10 @@ const BlogLayout = styled('div')`
   position: relative;
   max-width: ${props => props.theme.size.width.page + props.theme.size.unit};
   margin-top: calc(${props => {
-    if (props.theme.header.sticky) return props.theme.size.height.header + props.theme.size.height.breadcrumbs + props.theme.size.unit;
+    if (props.theme.header.sticky) return props.theme.size.height.header + props.theme.size.unit;
     return '0em';
   }} + 2em);
+  margin-bottom: 2em;
 
   @media (max-width: ${props => props.theme.size.responsive.mobile + props.theme.size.responsive.unit}) {
       flex-direction: column;

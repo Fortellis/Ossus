@@ -74,17 +74,15 @@ const MetaData = styled('div')`
     padding-left: .5em;
   }
 
-  .meta-data:first-of-type {
-    margin: 0px;
-  }
-
   .meta-data {
     display: flex;
     align-items: center;
-    margin-left: .5em;
+    margin-right: 1em;
 
     .icon {
       margin-right: 5px;
+      height: ${p => p.theme.type.frontmatter.font.size};
+      width: ${p => p.theme.type.frontmatter.font.size};
     }
 
     @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
