@@ -36,4 +36,3 @@ All reports will be reviewed by our team and will result in a response that is d
 Anyone asked to stop unacceptable behavior is expected to comply immediately. If an individual engages in unacceptable behavior, the review team may take any action they deem appropriate, including a permanent ban from the community.
 
 This code of conduct is based on the template established by the TODO Group and used by numerous other communities (e.g., [Facebook](https://code.facebook.com/pages/876921332402685/open-source-code-of-conduct), [Microsoft](https://opensource.microsoft.com/codeofconduct/), [Twitter](https://engineering.twitter.com/opensource/code-of-conduct), [Yahoo](https://yahoo.github.io/codeofconduct)).
-
