@@ -22,7 +22,7 @@ function withDocRouting(WrappedComponent) {
         return { ...props, ...WrappedComponent.getInitialProps(context) };
       }
       return props;
-    }
+    };
 
     componentDidMount() {
       this.setPaging();
