@@ -4,4 +4,4 @@ last updated: today
 author: Jared Jones
 ---
 
-Welcome to my new blog hosted right along side documentation with Ossus!
+Welcome to my new blog hosted right alongside documentation with Ossus!
