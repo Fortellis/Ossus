@@ -1,6 +1,5 @@
 {
     "order": [
-        { "route": "getting-started", "label": "Getting Started" },
-        { "route": "advanced", "label": "Advanced Topics" }
+        { "route": "getting-started", "label": "Getting Started" }
     ]
 }

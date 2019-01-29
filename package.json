@@ -8,7 +8,7 @@
     "clean:dist": "shx rm -rf packages/*/dist",
     "clean:tgz": "shx rm -rf packages/*/*.tgz",
     "dev": "npm run bootstrap; npm run exc; npm run start:sample",
-    "exc": "chmod +x packages/ossus-scripts/dist/index.js",
+    "exc": "chmod +x packages/ossus-scripts/dist/index.js && chmod +x packages/create-ossus/dist/index.js",
     "pack-all": "lerna exec --scope *ossus* --parallel -- npm pack",
     "postinstall": "npm run build",
     "start:sample": "pushd .;cd packages/sample; npm run dev; popd",
@@ -27,6 +27,7 @@
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-react": "^7.12.4",
     "lerna": "^3.6.0",
-    "markdown-loader": "^4.0.0"
+    "markdown-loader": "^4.0.0",
+    "npm-run-all": "^4.1.5"
   }
 }

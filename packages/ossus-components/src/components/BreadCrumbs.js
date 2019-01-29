@@ -23,24 +23,25 @@ class BreadCrumbs extends Component {
     const { router: { query }, config: { toc } } = this.props;
     this.docs = tocUtil(toc);
     if (query.page && query.doc) {
-      const currentPage = this.docs.getPage(query.page);
-      this.setState({
-        currentPageName: currentPage ? currentPage.label : '',
-        currentDoc: this.docs.getDoc(query.page, query.doc),
-        firstDoc: this.docs.getFirstDoc(query.page)
-      });
+      this.updateBreadCrumbs(query);
     }
   }
 
   componentDidUpdate(prevProps) {
     const { router: { query } } = this.props;
     if (prevProps.router.query !== query) {
-      this.setState({
-        currentDoc: this.docs.getDoc(query.page, query.doc),
-        firstDoc: this.docs.getFirstDoc(query.page)
-      });
+      this.updateBreadCrumbs(query);
     }
   }
+
+  updateBreadCrumbs = query => {
+    const currentPage = this.docs.getPage(query.page);
+    this.setState({
+      currentPageName: currentPage ? currentPage.label : '',
+      currentDoc: this.docs.getDoc(query.page, query.doc),
+      firstDoc: this.docs.getFirstDoc(query.page)
+    });
+  };
 
   render() {
     const { router, divider } = this.props;

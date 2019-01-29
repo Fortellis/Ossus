@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs-extra');
+const { exec } = require('child_process');
 const data = require('./data');
 
 function createPackage(name) {
@@ -9,8 +10,10 @@ function createPackage(name) {
         "description": "Built by create-ossus!",
         "main": "index.js",
         "scripts": {
-          "dev": "npm run structure; node server.js",
-          "build": "npm run structure; next build",
+          "dev": "run-s structure start:dev",
+          "start:dev": "next",
+          "build": "run-s structure build:site",
+          "build:site": "next build",
           "start": "NODE_ENV=production node server.js",
           "structure": "ossus-scripts build",
           "export": "next export"
@@ -19,7 +22,10 @@ function createPackage(name) {
                 ...reducer,
                 [value.name]: value.version
         }), {}),
-        "devDependencies": {}
+        "devDependencies": data.devPackages.reduce((reducer, value) => ({
+            ...reducer,
+            [value.name]: value.version
+    }), {}),
     }
 }
 
@@ -34,16 +40,26 @@ function create() {
         const name = dirs[dirs.length - 1];
         fs.writeFileSync(`${process.cwd()}/package.json`, JSON.stringify(createPackage(name), null, 2));
         console.log('Generated package.json...');
-        console.log('Finishing up...');
-        console.log(`Ossus documentation site built!
-    
-To get started:
-cd /${name}
-npm install
+        console.log('Installing Packages... (This may take a minute)');
+        exec('npm install', (err, stdout, stderr) => {
+            if (err) {
+              // node couldn't execute the command
+              console.log('Oops... something went wrong while intstalling your packages. Please try again manually!')
+              console.log(stderr);
+              return;
+            }
+          
+            console.log('Finishing up...');
+            console.log(`
+Ossus documentation site built!
+        
+To get started run:
 npm run dev
+go to http://localhost:3000
 
-Thanks for using Ossus ❤️
-`);
+Thanks for using Ossus ❤️`);
+          });
+        
     } catch (err) {
         console.log('Failed to create directory structure... oops 😱');
     }
