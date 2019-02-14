@@ -122,8 +122,7 @@ const BreadCrumbsContainer = styled('div')`
   width: ${props => props.theme.size.width.page + props.theme.size.unit};
 
   .feather {
-    height: ${p => p.theme.breadcrumbs.font.size};
-    font-size: ${p => p.theme.breadcrumbs.font.size};
+    height: ${p => p.theme.breadcrumbs.divider.height};
     color: ${p => p.theme.breadcrumbs.color.fg};
   }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { withConfig } from 'ossus';
 
@@ -14,12 +15,16 @@ function BlogSidebar({ config, title, limit }) {
   }));
 
   return (
-    <TocSection
-      title={title}
-      links={blogs}
-    />
+    <BlogSideBarContainer>
+      <TocSection title={title} links={blogs} />
+    </BlogSideBarContainer>
   );
 }
+
+const BlogSideBarContainer = styled('div')`
+  width: ${p => p.theme.size.width.blogSidebar + p.theme.size.unit};
+  max-width: ${p => p.theme.size.width.blogSidebar + p.theme.size.unit};
+`;
 
 BlogSidebar.propTypes = {
   config: PropTypes.shape({
@@ -27,12 +32,12 @@ BlogSidebar.propTypes = {
     toc: PropTypes.object
   }).isRequired,
   title: PropTypes.string,
-  limit: PropTypes.number,
+  limit: PropTypes.number
 };
 
 BlogSidebar.defaultProps = {
   title: 'Recent Posts',
-  limit: 10,
+  limit: 10
 };
 
 export default withConfig(BlogSidebar);
