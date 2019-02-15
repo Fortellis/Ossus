@@ -1,6 +1,6 @@
 {
   "name": "ossus-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Components for the stock Ossus docs experience",
   "main": "dist/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "feathered": "1.0.2",
     "html-react-parser": "^0.6.0",
     "next": "^7.0.2",
-    "ossus": "^1.0.0",
+    "ossus": "^1.0.1",
     "polished": "^2.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
