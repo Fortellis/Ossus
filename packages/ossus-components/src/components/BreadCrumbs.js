@@ -98,7 +98,7 @@ const OuterContainer = styled('div')`
   z-index: 99;
   top: 0;
 
-  border-bottom: 1px solid ${p => p.theme.color.grey};
+  border-bottom: 1px solid ${p => p.theme.breadcrumbs.color.border};
   background-color: ${p => p.theme.breadcrumbs.color.bg};
   position: ${p => p.theme.header.sticky ? 'fixed' : 'static'};
   margin-top: calc(${props => {
@@ -122,8 +122,7 @@ const BreadCrumbsContainer = styled('div')`
   width: ${props => props.theme.size.width.page + props.theme.size.unit};
 
   .feather {
-    height: ${p => p.theme.breadcrumbs.font.size};
-    font-size: ${p => p.theme.breadcrumbs.font.size};
+    height: ${p => p.theme.breadcrumbs.divider.height};
     color: ${p => p.theme.breadcrumbs.color.fg};
   }
 

@@ -35,19 +35,21 @@ TocSection.propTypes = {
 };
 
 const Section = styled('nav')`
-  width: ${p => p.theme.size.width.blogSidebar + p.theme.size.unit};
-  max-width: ${p => p.theme.size.width.blogSidebar + p.theme.size.unit};
+  width: 100%;
+
+  background-color: ${p => p.theme.toc.color.bg};
 `;
 
 const SectionTitle = styled('h1')`
   width: 100%;
-  margin: 0;
-  font-size: 1.1rem;
-  padding: .25em 1em .25em 0em;
-
-  color: ${p => p.theme.color.primary};
-  font-family: ${p => p.theme.font.family.body};
-  font-weight: ${p => p.theme.font.weight.semibold};
+  
+  color: ${p => p.theme.toc.title.color.fg};
+  font-size: ${p => p.theme.toc.title.font.size};
+  font-family: ${p => p.theme.toc.title.font.family};
+  font-weight: ${p => p.theme.toc.title.font.weight};
+  background-color: ${p => p.theme.toc.title.color.bg};
+  margin: ${p => p.theme.toc.title.space.margin};
+  padding: ${p => p.theme.toc.title.space.padding};
 `;
 
 const SectionItems = styled('ul')`
@@ -59,30 +61,23 @@ const SectionItems = styled('ul')`
 
 const SectionItem = styled('li')`
   padding: 0em;
-  margin: .25em 0em;
+  margin: ${p => p.theme.toc.item.space.margin};
 
   a {
     display: block;
     text-decoration: none;
-    padding: .75em 1em;
-
-    color: ${p => p.theme.color.fg};
-    font-size: ${p => p.theme.font.size.body + p.theme.font.size.unit};
-    font-family: ${p => p.theme.font.family.body};
-    font-weight: ${p => p.theme.font.weight.regular};
+    
+    padding: ${p => p.theme.toc.item.space.padding};
+    color: ${p => p.highlight ? p.theme.toc.item.color.fgActive : p.theme.toc.item.color.fg};
+    font-size: ${p => p.theme.toc.item.font.size};
+    font-family: ${p => p.theme.toc.item.font.family};
+    font-weight: ${p => p.theme.toc.item.font.weight};
+    background-color: ${p => p.highlight ? p.theme.toc.item.color.bgActive : p.theme.toc.item.color.bg};
 
     &:hover {
-      color: ${p => p.theme.color.primary}
+      cursor: pointer;
+      color: ${p => p.theme.toc.item.color.fgHover};
     }
-
-    ${p => p.highlight && `
-      color: ${p.theme.color.fgOnPrimary};
-      background-color: ${p.theme.color.primary};
-
-      &:hover {
-        color: ${p.theme.color.fgOnPrimary};
-      }
-    `}
   }
 `;
 

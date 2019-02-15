@@ -33,7 +33,7 @@ function Menu({ menu, activeHeader }) {
               )
             }
           </List>
-        ) : (<List></List>)
+        ) : (<List empty></List>)
       }
     </div>
   );
@@ -45,65 +45,69 @@ Menu.propTypes = {
 };
 
 const List = styled('ul')`
-    max-width: ${props => props.theme.size.width.menu + props.theme.size.unit};
-    min-width: ${props => props.theme.size.width.menu + props.theme.size.unit};
-    list-style: none;
-    border-left: 2px solid ${props => props.theme.color.secondary};
-    position: sticky;
-    margin-top: 0px;
-    left: ${props => (props.theme.size.width.page - props.theme.size.width.menu) + props.theme.size.unit};
-    top: calc(${props => {
-    if (props.theme.header.sticky) return (props.theme.size.height.header + props.theme.size.height.breadcrumbs) + props.theme.size.unit;
+  list-style: none;
+  position: sticky;
+  margin-top: 0px;
+  padding:${p => p.theme.menu.space.padding};
+  max-height: 500px;
+  overflow: auto;
+
+  border-radius: ${p => p.theme.menu.borderRadius};
+  background-color: ${p => p.empty ? 'transparent' : p.theme.menu.color.bg};
+  max-width: ${p => p.theme.size.width.menu + p.theme.size.unit};
+  min-width: ${p => p.theme.size.width.menu + p.theme.size.unit};
+  left: ${p => (p.theme.size.width.page - p.theme.size.width.menu) + p.theme.size.unit};
+  top: calc(${p => {
+    if (p.theme.header.sticky) return (p.theme.size.height.header + p.theme.size.height.breadcrumbs) + p.theme.size.unit;
     return '0em';
   }} + 1em);
-    padding-left: 15px;
-    max-height: 500px;
-    overflow: auto;
 
-    @media (max-width: ${props => props.theme.size.width.page + props.theme.size.unit}) {
-        display: none;
-    }
+  ${p => {
+    return p.theme.menu.divider
+      ? `border-left: ${p.theme.menu.divider.width} solid ${p.theme.menu.color.divider};`
+      : '';
+  }}
 
-    li:first-of-type {
-        padding-top: 0px;
-    }
+  @media (max-width: ${p => p.theme.size.width.page + p.theme.size.unit}) {
+    display: none;
+  }
 
-    li:last-child {
-        padding-bottom: 0px;
-    }
+  li:first-of-type {
+    padding-top: 0px;
+  }
+
+  li:last-child {
+    padding-bottom: 0px;
+  }
 `;
 
 const ListItem = styled('li')`
-    font-size: .8rem;
-    font-family: ${props => props.theme.font.family.body};
-    font-weight: ${p => p.theme.font.weight.semibold};
-    padding: 5px 0px;
-    color: ${props => props.theme.color.fg};
-    padding-left: ${p => (p.depth - 2) * 15}px;
-    ${p => p.active ? `
-    font-weight: ${p.theme.font.weight.bold};
-    color: ${p.theme.color.primary};
-    ` : ''}
+  padding: 5px 0px;
+  padding-left: ${p => (p.depth - 2) * 15}px;
+
+  color: ${p => p.active ? p.theme.menu.color.fgActive : p.theme.menu.color.fg};
+  font-size: ${p => p.theme.menu.font.size};
+  font-family: ${p => p.theme.menu.font.family};
+  font-weight: ${p => p.theme.menu.font.weight};
+
+  &:hover {
+    cursor: pointer;
+    color: ${p => p.theme.menu.color.fgHover};
+  }
+  
+  a {
+    text-decoration: none;
+
+    color: ${p => p.active ? p.theme.menu.color.fgActive : p.theme.menu.color.fg};
+    font-size: ${p => p.theme.menu.font.size};
+    font-family: ${p => p.theme.menu.font.family};
+    font-weight: ${p => p.theme.menu.font.weight};
 
     &:hover {
-        cursor: pointer;
-        color: ${props => props.theme.color.primary};
-        font-weight: ${p => p.theme.font.weight.semibold};
+      cursor: pointer;
+      color: ${p => p.theme.menu.color.fgHover};
     }
-    
-    a {
-        text-decoration: none;
-        color: ${props => props.theme.color.fg};
-        ${p => p.active ? `
-        font-weight: ${p.theme.font.weight.bold};
-        color: ${p.theme.color.primary};
-        ` : ''}
-
-        &:hover {
-            color: ${props => props.theme.color.primary};
-            font-weight: 500;
-        }
-    }
+  }
 `;
 
 export default Menu;

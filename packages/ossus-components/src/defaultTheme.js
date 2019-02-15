@@ -66,7 +66,104 @@ function generateDefaultTheme(color, font) {
       spacing: '10px',
       color: {
         bg: color.bg,
-        fg: color.fg
+        fg: color.fg,
+        border: color.grey
+      },
+      font: {
+        size: font.size.body + font.size.unit,
+        family: font.family.body,
+        weight: font.weight.regular
+      },
+      divider: {
+        height: font.size.body + font.size.unit
+      }
+    },
+    toc: {
+      color: {
+        bg: color.bg,
+      },
+      title: {
+        space: {
+          margin: '0',
+          padding: '.25em 1em .25em 0em',
+        },
+        color: {
+          fg: color.fg,
+          bg: color.bg
+        },
+        font: {
+          size: '1rem',
+          family: font.family.body,
+          weight: font.weight.regular
+        }
+      },
+      item: {
+        space: {
+          margin: '.25em 0em',
+          padding: '.75em 1em',
+        },
+        color: {
+          bg: color.bg,
+          fg: color.fg,
+          fgHover: color.primary,
+          fgActive: color.fgOnPrimary,
+          bgActive: color.primary
+        },
+        font: {
+          size: font.size.body + font.size.unit,
+          family: font.family.body,
+          weight: font.weight.regular
+        }
+      }
+    },
+    menu: {
+      borderRadius: '0px',
+      space: {
+        padding: '0px 0px 0px 12px'
+      },
+      divider: {
+        width: '2px'
+      },
+      color: {
+        bg: color.bg,
+        fg: color.fg,
+        fgHover: color.primary,
+        fgActive: color.primary,
+        divider: color.fg
+      },
+      font: {
+        size: font.size.body + font.size.unit,
+        family: font.family.body,
+        weight: font.weight.regular
+      }
+    },
+    button: {
+      borderRadius: '4px',
+      borderWidth: '1.5px',
+      color: {
+        bg: color.bg,
+        fg: color.primary,
+        border: color.primary,
+        bgHover: color.primary,
+        fgHover: color.fgOnPrimary,
+        borderHover: color.primary,
+      },
+      font: {
+        size: font.size.body + font.size.unit,
+        family: font.family.body,
+        weight: font.weight.regular
+      }
+    },
+    paging: {
+      borderRadius: '4px',
+      borderWidth: '1.5px',
+      color: {
+        bg: color.bg,
+        fg: color.primary,
+        border: color.grey,
+        bgHover: color.primary,
+        fgHover: color.fgOnPrimary,
+        borderHover: color.primary,
       },
       font: {
         size: font.size.body + font.size.unit,
@@ -97,7 +194,8 @@ function generateDefaultTheme(color, font) {
         font: {
           size: font.size.body + font.size.unit,
           family: font.family.body,
-          weight: font.weight.regular
+          weight: font.weight.regular,
+          lineHeight: '1.5'
         },
         color: color.primary,
       },
@@ -105,7 +203,8 @@ function generateDefaultTheme(color, font) {
         font: {
           size: font.size.body + font.size.unit,
           family: font.family.body,
-          weight: font.weight.regular
+          weight: font.weight.regular,
+          lineHeight: '1.5'
         },
         color: color.fg,
       },

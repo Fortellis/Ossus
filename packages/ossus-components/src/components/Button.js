@@ -11,19 +11,21 @@ const Button = styled('button')`
   margin: ${p => p.margin || '0em'};
   width: ${p => p.width || 'auto'};
   height: ${p => p.height || 'auto'};
+  font-size: ${p => p.fontSize || p.theme.button.font.size};
 
-  color: ${p => p.theme.color.primary};
-  background-color: ${p => p.theme.color.bg};
-  border: 1.5px solid ${p => p.theme.color.primary};
-  border-radius: ${p => p.theme.size.radius + p.theme.size.unit};
-  font-family: ${p => p.theme.font.family.body};
-  font-size: ${p => p.fontSize || p.theme.font.size.body + p.theme.font.size.unit};
+  color: ${p => p.theme.button.color.fg};
+  background-color: ${p => p.theme.button.color.bg};
+  border:${p => `${p.theme.button.borderWidth} solid ${p.theme.button.color.border}`};
+  border-radius: ${p => p.theme.button.borderRadius};
+  font-family: ${p => p.theme.button.font.family};
+  font-weight: ${p => p.theme.button.font.weight};
 
   &:hover {
     cursor: pointer;
 
-    background-color: ${p => p.theme.color.primary};
-    color: ${p => p.theme.color.fgOnPrimary};
+    color: ${p => p.theme.button.color.fgHover};
+    background-color: ${p => p.theme.button.color.bgHover};
+    border:${p => `${p.theme.button.borderWidth} solid ${p.theme.button.color.borderHover}`};
   }
 `;
 

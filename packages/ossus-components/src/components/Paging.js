@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Routes } from 'ossus';
+// Components
 import Feather from 'feathered';
+// Variables
+const dirs = ['left', 'right'];
 
-const Paging = ({ nextDoc, prevDoc, page }) => {
+const Paging = ({ nextDoc, prevDoc, page, buttonAs }) => {
+  const LinkComp = buttonAs || PageLink;
   return (
     <StyledPaging>
       {
@@ -15,12 +19,7 @@ const Paging = ({ nextDoc, prevDoc, page }) => {
               section: prevDoc.section,
               doc: prevDoc.doc
             }}>
-              <a>
-                <Feather icon='chevron-left' />
-                <span className='link-info'>
-                  {prevDoc.label}
-                </span>
-              </a>
+              <LinkComp dir={dirs[0]} label={prevDoc.label} />
             </Routes.Link>
           </div>
         ) : null
@@ -33,12 +32,7 @@ const Paging = ({ nextDoc, prevDoc, page }) => {
               section: nextDoc.section,
               doc: nextDoc.doc
             }}>
-              <a>
-                <span className='link-info'>
-                  {nextDoc.label}
-                </span>
-                <Feather icon='chevron-right' />
-              </a>
+              <LinkComp dir={dirs[1]} label={nextDoc.label} />
             </Routes.Link>
           </div>
         ) : null
@@ -60,6 +54,54 @@ Paging.propTypes = {
   }),
   page: PropTypes.string,
 };
+
+function PageLink({ dir, label, ...rest }) {
+  return (
+    <PageLinkStyled dir={dir} {...rest}>
+      {dir === dirs[0] && <Feather icon='chevron-left' />}
+      <span>{label}</span>
+      {dir === dirs[1] && <Feather icon='chevron-right' />}
+    </PageLinkStyled>
+  );
+}
+
+PageLink.propTypes = {
+  dir: PropTypes.oneOf(dirs),
+  label: PropTypes.string
+};
+
+const PageLinkStyled = styled('a')`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 1em;
+  height: 100%;
+
+  border-radius: ${p => p.theme.paging.borderRadius};
+  border: ${p => `${p.theme.paging.borderWidth} solid ${p.theme.paging.color.border}`};
+  background-color: ${p => p.theme.paging.color.bg};
+  color: ${p => p.theme.paging.color.fg};
+  font-size: ${p => p.theme.paging.font.size};
+  font-weight: ${p => p.theme.paging.font.weight};
+  font-family: ${p => p.theme.paging.font.family};
+  
+  transition: background-color .25s ease, color .2s ease;
+
+  ${p => {
+    if (p.dir === dirs[0]) {
+      return 'text-align: right;';
+    }
+    return '';
+  }}
+
+  &:hover {
+    cursor: pointer;
+    border: ${p => `${p.theme.paging.borderWidth} solid ${p.theme.paging.color.borderHover}`};
+    background-color: ${p => p.theme.paging.color.bgHover};
+    color: ${p => p.theme.paging.color.fgHover};
+  }
+`;
 
 const StyledPaging = styled('div')`
   padding-top: 2em;
@@ -88,40 +130,10 @@ const StyledPaging = styled('div')`
 
     &.left {
       margin: 0em 1em 0em 0em;
-      text-align: right;
     }
 
     &.right {
       margin: 0em 0em 0em 1em;
-    }
-
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1.5px solid #ccc;
-      border-radius: 4px;
-      padding: 1em;
-      text-decoration: none;
-      color: #888;
-      transition: background-color .25s ease, color .2s ease;
-      height: 100%;
-
-      .link-info {
-        font-weight: ${props => props.theme.font.weight.semibold};
-        font-family: ${props => props.theme.font.family.title};
-        color: ${props => props.theme.color.fg};
-      }
-
-      &:hover {
-        background-color: ${props => props.theme.color.primary};
-        color: ${props => props.theme.color.fgOnPrimary};
-        border: 1.5px solid ${props => props.theme.color.primary};
-
-        .link-info {
-          color: ${props => props.theme.color.fgOnPrimary};
-        }
-      }
     }
   }
 `;
