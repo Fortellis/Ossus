@@ -79,7 +79,7 @@ const site = {
 
 const theme = {
   color: {
-    primary: "#000"
+    primary: "#000",
   },
   size: {
     height: {

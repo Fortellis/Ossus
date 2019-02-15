@@ -21,10 +21,11 @@ function Layout({ config, toc, children }) {
     <>
       <Global styles={css`
           * {
-              box-sizing: border-box;
+            box-sizing: border-box;
           }
           body {
-              margin: 0px;
+            margin: 0px;
+            background-color: ${t.color.bg};
           }
         `}
       />
