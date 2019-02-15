@@ -48,7 +48,7 @@ const List = styled('ul')`
   list-style: none;
   position: sticky;
   margin-top: 0px;
-  padding-left: 15px;
+  padding:${p => p.theme.menu.space.padding};
   max-height: 500px;
   overflow: auto;
 
@@ -82,17 +82,13 @@ const List = styled('ul')`
 `;
 
 const ListItem = styled('li')`
-  padding-left: ${p => (p.depth - 2) * 15}px;
   padding: 5px 0px;
+  padding-left: ${p => (p.depth - 2) * 15}px;
 
-  color: ${p => p.theme.menu.color.fg};
+  color: ${p => p.active ? p.theme.menu.color.fgActive : p.theme.menu.color.fg};
   font-size: ${p => p.theme.menu.font.size};
   font-family: ${p => p.theme.menu.font.family};
   font-weight: ${p => p.theme.menu.font.weight};
-  
-  ${p => p.active ? `
-  color: ${p.theme.menu.color.fgActive};
-  ` : ''}
 
   &:hover {
     cursor: pointer;
@@ -101,14 +97,11 @@ const ListItem = styled('li')`
   
   a {
     text-decoration: none;
-    color: ${p => p.theme.menu.color.fg};
+
+    color: ${p => p.active ? p.theme.menu.color.fgActive : p.theme.menu.color.fg};
     font-size: ${p => p.theme.menu.font.size};
     font-family: ${p => p.theme.menu.font.family};
     font-weight: ${p => p.theme.menu.font.weight};
-    
-    ${p => p.active ? `
-    color: ${p.theme.menu.color.fgActive};
-    ` : ''}
 
     &:hover {
       cursor: pointer;

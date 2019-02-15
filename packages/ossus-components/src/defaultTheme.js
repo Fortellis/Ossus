@@ -118,6 +118,9 @@ function generateDefaultTheme(color, font) {
     },
     menu: {
       borderRadius: '0px',
+      space: {
+        padding: '0px 0px 0px 12px'
+      },
       divider: {
         width: '2px'
       },
@@ -127,6 +130,40 @@ function generateDefaultTheme(color, font) {
         fgHover: color.primary,
         fgActive: color.primary,
         divider: color.fg
+      },
+      font: {
+        size: font.size.body + font.size.unit,
+        family: font.family.body,
+        weight: font.weight.regular
+      }
+    },
+    button: {
+      borderRadius: '4px',
+      borderWidth: '1.5px',
+      color: {
+        bg: color.bg,
+        fg: color.primary,
+        border: color.primary,
+        bgHover: color.primary,
+        fgHover: color.fgOnPrimary,
+        borderHover: color.primary,
+      },
+      font: {
+        size: font.size.body + font.size.unit,
+        family: font.family.body,
+        weight: font.weight.regular
+      }
+    },
+    paging: {
+      borderRadius: '4px',
+      borderWidth: '1.5px',
+      color: {
+        bg: color.bg,
+        fg: color.primary,
+        border: color.grey,
+        bgHover: color.primary,
+        fgHover: color.fgOnPrimary,
+        borderHover: color.primary,
       },
       font: {
         size: font.size.body + font.size.unit,
@@ -157,7 +194,8 @@ function generateDefaultTheme(color, font) {
         font: {
           size: font.size.body + font.size.unit,
           family: font.family.body,
-          weight: font.weight.regular
+          weight: font.weight.regular,
+          lineHeight: '1.5'
         },
         color: color.primary,
       },
@@ -165,7 +203,8 @@ function generateDefaultTheme(color, font) {
         font: {
           size: font.size.body + font.size.unit,
           family: font.family.body,
-          weight: font.weight.regular
+          weight: font.weight.regular,
+          lineHeight: '1.5'
         },
         color: color.fg,
       },

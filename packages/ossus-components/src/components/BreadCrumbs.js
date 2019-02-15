@@ -98,7 +98,7 @@ const OuterContainer = styled('div')`
   z-index: 99;
   top: 0;
 
-  border-bottom: 1px solid ${p => p.theme.color.grey};
+  border-bottom: 1px solid ${p => p.theme.breadcrumbs.color.border};
   background-color: ${p => p.theme.breadcrumbs.color.bg};
   position: ${p => p.theme.header.sticky ? 'fixed' : 'static'};
   margin-top: calc(${props => {

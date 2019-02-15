@@ -36,7 +36,7 @@ TocSection.propTypes = {
 
 const Section = styled('nav')`
   width: 100%;
-  
+
   background-color: ${p => p.theme.toc.color.bg};
 `;
 
@@ -68,25 +68,16 @@ const SectionItem = styled('li')`
     text-decoration: none;
     
     padding: ${p => p.theme.toc.item.space.padding};
-    color: ${p => p.theme.toc.item.color.fg};
+    color: ${p => p.highlight ? p.theme.toc.item.color.fgActive : p.theme.toc.item.color.fg};
     font-size: ${p => p.theme.toc.item.font.size};
     font-family: ${p => p.theme.toc.item.font.family};
     font-weight: ${p => p.theme.toc.item.font.weight};
-    background-color: ${p => p.theme.toc.item.color.bg};
+    background-color: ${p => p.highlight ? p.theme.toc.item.color.bgActive : p.theme.toc.item.color.bg};
 
     &:hover {
       cursor: pointer;
       color: ${p => p.theme.toc.item.color.fgHover};
     }
-
-    ${p => p.highlight ? `
-      color: ${p => p.theme.toc.item.color.fgActive};
-      background-color: ${p => p.theme.toc.item.color.bgActive};
-
-      &:hover {
-        color: ${p => p.theme.toc.item.color.fgActive};
-      }
-    `: ''}
   }
 `;
 

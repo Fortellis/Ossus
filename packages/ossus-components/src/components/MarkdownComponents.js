@@ -7,10 +7,12 @@ const A = styled('a')`
   font-size: ${p => p.theme.type.a.font.size};
   font-family: ${p => p.theme.type.a.font.family};
   font-weight: ${p => p.theme.type.a.font.weight};
+  line-height: ${p => p.theme.type.p.font.lineHeight};
+
   &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-      color: ${p => lighten(0.1, p.theme.type.a.color)};
+    cursor: pointer;
+    text-decoration: underline;
+    color: ${p => lighten(0.1, p.theme.type.a.color)};
   }
 `;
 
@@ -19,15 +21,15 @@ const P = styled('p')`
   font-size: ${p => p.theme.type.p.font.size};
   font-family: ${p => p.theme.type.p.font.family};
   font-weight: ${p => p.theme.type.p.font.weight};
-  line-height: 1.5;
+  line-height: ${p => p.theme.type.p.font.lineHeight};
   padding: .25em 0em;
 
   code {
-      background-color: ${p => p.theme.code.color.inlineBg};
-      font-family: ${p => p.theme.code.font.family};
-      font-size: ${p => p.theme.code.font.size};
-      border-radius: 2px;
-      padding: 3px;
+    background-color: ${p => p.theme.code.color.inlineBg};
+    font-family: ${p => p.theme.code.font.family};
+    font-size: ${p => p.theme.code.font.size};
+    border-radius: 2px;
+    padding: 3px;
   }
 `;
 

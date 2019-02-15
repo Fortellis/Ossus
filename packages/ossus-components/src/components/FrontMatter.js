@@ -34,7 +34,7 @@ function FrontMatter({ frontMatter, options }) {
         {
           opts.readTime && (
             <span className='meta-data'>
-              <Feather icon='clock' width={16} className='icon' />
+              <Feather icon='clock' width={16} height={16} className='icon' />
               {frontMatter.readTime || 0} minute read
             </span>
           )
@@ -78,6 +78,8 @@ const MetaData = styled('div')`
     display: flex;
     align-items: center;
     margin-right: 1em;
+
+    font-size: ${p => p.theme.type.frontmatter.font.size};
 
     .icon {
       margin-right: 5px;
