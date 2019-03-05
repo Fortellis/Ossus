@@ -1,6 +1,6 @@
 {
   "name": "create-ossus",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Scripts to create a default Ossus documentation app",
   "main": "dist/index.js",
   "scripts": {
