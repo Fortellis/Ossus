@@ -76,7 +76,7 @@ const SectionItem = styled('li')`
 
     &:hover {
       cursor: pointer;
-      color: ${p => p.theme.toc.item.color.fgHover};
+      color: ${p => p.highlight ? p.theme.toc.item.color.fgActiveHover : p.theme.toc.item.color.fgHover};
     }
   }
 `;

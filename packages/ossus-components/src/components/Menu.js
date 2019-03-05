@@ -6,18 +6,20 @@ function toTop() {
   window.scrollTo(0, 0);
 }
 
-function Menu({ menu, activeHeader }) {
+function Menu({ menu, title, hasTitle, activeHeader }) {
   return (
     <div>
       {
         (menu && menu.length) ? (
           <List>
-            <ListItem
-              onClick={toTop}
-              title='Return to top'
-            >
-              CONTENTS
-            </ListItem>
+            {hasTitle && (
+              <ListItem
+                onClick={toTop}
+                title='Return to top'
+              >
+                {title}
+              </ListItem>
+            )}
             {
               menu.map(item => (
                 <ListItem
@@ -41,7 +43,14 @@ function Menu({ menu, activeHeader }) {
 
 Menu.propTypes = {
   menu: PropTypes.arrayOf(PropTypes.object), // Requires the array of headings output from remark-outer-toc
+  title: PropTypes.string,
+  hasTitle: PropTypes.bool,
   activeHeader: PropTypes.string
+};
+
+Menu.defaultProps = {
+  title: 'Contents',
+  hasTitle: true
 };
 
 const List = styled('ul')`
@@ -83,7 +92,7 @@ const List = styled('ul')`
 
 const ListItem = styled('li')`
   padding: 5px 0px;
-  padding-left: ${p => (p.depth - 2) * 15}px;
+  padding-left: ${p => ((p.depth - 2) * p.theme.menu.space.tab) + p.theme.size.unit};
 
   color: ${p => p.active ? p.theme.menu.color.fgActive : p.theme.menu.color.fg};
   font-size: ${p => p.theme.menu.font.size};

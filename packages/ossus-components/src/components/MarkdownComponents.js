@@ -50,26 +50,55 @@ const Pre = styled('pre')`
 const Table = styled('table')`
   max-width: 100%;
   border: none;
-  font-family: Raleway, sans-serif;
-  font-size: .85rem;
-  margin: 2em 0em;
-  box-shadow: ${p => p.theme.shadow};
-  padding: 0;
   border-collapse: collapse;
-  border-radius: 4px;
+
+  box-shadow: ${p => p.theme.shadow};
+  font-family: ${p => p.theme.type.table.font.family};
+  font-size: ${p => p.theme.type.table.font.size};
+  font-weight: ${p => p.theme.type.table.font.weight};
+  margin: ${p => p.theme.type.table.space.margin};
+  padding: ${p => p.theme.type.table.space.padding};
+  border-radius: ${p => p.theme.type.table.borderRadius};
 
   th,
   td {
-    padding: 1.25em;
     text-align: left;
+
+    padding: ${p => p.theme.type.table.cell.space.padding};
   }
 
   th {
-    font-size: .75rem;
+    font-family: ${p => p.theme.type.table.head.font.family};
+    font-size: ${p => p.theme.type.table.head.font.size};
+    font-weight: ${p => p.theme.type.table.head.font.weight};
+
+  ${p => {
+    // If border not false
+    return p.theme.type.table.head.border ? `
+    border-style: ${p.theme.type.table.head.border.style};
+    border-width: ${p.theme.type.table.head.border.width};
+    border-color: ${p.theme.type.table.color.border};
+    ` : '';
+  }}
   }
 
   td {
-    border-bottom: 1px solid #ddd;
+    ${p => {
+    // If border not false
+    return p.theme.type.table.cell.border ? `
+    border-style: ${p.theme.type.table.cell.border.style};
+    border-width: ${p.theme.type.table.cell.border.width};
+    border-color: ${p.theme.type.table.color.border};
+    ` : '';
+  }}
+
+    code {
+      background-color: ${p => p.theme.code.color.inlineBg};
+      font-family: ${p => p.theme.code.font.family};
+      font-size: ${p => p.theme.code.font.size};
+      border-radius: 2px;
+      padding: 3px;
+    }
   }
 `;
 

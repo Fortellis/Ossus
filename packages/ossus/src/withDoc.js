@@ -43,14 +43,26 @@ function withDocRouting(WrappedComponent) {
 
     watchMenu = menu => this.setState({ menu });
 
+    watchFront = front => this.setState({ front });
+
     render() {
+      const {
+        menu,
+        front,
+        prevDoc,
+        nextDoc,
+        activeHeader,
+      } = this.state;
+      
       return (
         <WrappedComponent
-          activeHeader={this.state.activeHeader}
-          prevDoc={this.state.prevDoc}
-          nextDoc={this.state.nextDoc}
-          menu={this.state.menu}
+          menu={menu}
+          front={front}
+          prevDoc={prevDoc}
+          nextDoc={nextDoc}
+          activeHeader={activeHeader}
           watchScroll={this.watchScroll}
+          watchFront={this.watchFront}
           watchMenu={this.watchMenu}
           {...this.props}
         />

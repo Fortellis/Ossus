@@ -23,3 +23,8 @@ Ossus can be set up easily with the `create-ossus` package. `create-ossus` autom
 5. Run the site with `npm run dev`
 
 Once you have it started, go to <http://localhost:3000> to view your new documentation site. Now that the site is running any changes you make to files will automatically cause the site to reload. However if you add, remove, or rename documentation files you may need to run the site again.
+
+| param | description |
+| ----- | ----------- |
+| test | wow this is cool this is what a table looks like in markdown |
+| another test | Here is some `code` |

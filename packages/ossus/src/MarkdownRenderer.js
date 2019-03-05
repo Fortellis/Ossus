@@ -57,7 +57,7 @@ class MarkdownRenderer extends Component {
   };
 
   generateMarkdown = () => {
-    const { content, menuCallback, components } = this.props;
+    const { content, menuCallback, frontCallback, components } = this.props;
 
     let front;
     const setFront = (x) => {
@@ -101,6 +101,7 @@ class MarkdownRenderer extends Component {
       front: frontObj,
       markdown: md.contents,
     }, () => {
+      frontCallback(frontObj);
       menuCallback(menu);
     });
   };
@@ -139,13 +140,15 @@ class MarkdownRenderer extends Component {
 MarkdownRenderer.propTypes = {
   content: PropTypes.string.isRequired,
   menuCallback: PropTypes.func,
+  frontCallback: PropTypes.func,
   watchScroll: PropTypes.func,
   components: PropTypes.object
 };
 
 MarkdownRenderer.defaultProps = {
-  menuCallback: () => { },
-  watchScroll: () => { },
+  menuCallback: () => {},
+  frontCallback: () => {},
+  watchScroll: () => {},
   components: {}
 };
 

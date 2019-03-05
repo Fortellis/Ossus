@@ -11,8 +11,8 @@ const color = {
 
 const font = {
   family: {
-    title: 'Montserrat, sans-serif',
-    body: 'Raleway, sans-serif',
+    title: 'sans-serif',
+    body: 'sans-serif',
     mono: 'monospace',
   },
   size: {
@@ -107,6 +107,7 @@ function generateDefaultTheme(color, font) {
           fg: color.fg,
           fgHover: color.primary,
           fgActive: color.fgOnPrimary,
+          fgActiveHover: color.fgOnPrimary,
           bgActive: color.primary
         },
         font: {
@@ -119,7 +120,8 @@ function generateDefaultTheme(color, font) {
     menu: {
       borderRadius: '0px',
       space: {
-        padding: '0px 0px 0px 12px'
+        padding: '0px 0px 0px 12px',
+        tab: 15
       },
       divider: {
         width: '2px'
@@ -172,6 +174,43 @@ function generateDefaultTheme(color, font) {
       }
     },
     type: {
+      table: {
+        borderRadius: '4px',
+        color: {
+          fg: color.fg,
+          bg: color.bg,
+          border: color.grey
+        },
+        font: {
+          family: font.family.body,
+          size: font.size.body + font.size.unit,
+          weight: font.weight.regular,
+        },
+        space: {
+          margin: '2em 0em',
+          padding: '0em',
+        },
+        head: {
+          color: {
+            fg: color.fg,
+          },
+          font: {
+            family: font.family.body,
+            size: font.size.body + font.size.unit,
+            weight: font.weight.regular,
+          },
+          border: false
+        },
+        cell: {
+          space: {
+            padding: '.5em'
+          },
+          border: {
+            style: 'solid',
+            width: '0px 0px 1px 0px'
+          },
+        }
+      },
       frontmatter: {
         color: color.fg,
         borderColor: color.grey,
@@ -204,7 +243,8 @@ function generateDefaultTheme(color, font) {
           size: font.size.body + font.size.unit,
           family: font.family.body,
           weight: font.weight.regular,
-          lineHeight: '1.5'
+          lineHeight: '1.5',
+          letterSpacing: '0'
         },
         color: color.fg,
       },

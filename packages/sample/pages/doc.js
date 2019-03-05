@@ -43,12 +43,14 @@ class Doc extends Component {
             nextDoc,
             // Menu Props
             menu,
+            front,
             activeHeader,
             // Update props
             watchMenu,
+            watchFront,
             watchScroll,
         } = this.props;
-
+        console.log(watchFront);
         // Handle 404 errors for unknown doc links
         if (statusCode === 404) {
             return <ErrorPage statusCode={statusCode} />
@@ -63,6 +65,7 @@ class Doc extends Component {
                             content={content}
                             menuCallback={watchMenu}
                             watchScroll={watchScroll}
+                            watchFront={watchFront}
                             components={componentMap}
                             FrontMatter={FrontMatter}
                         />
@@ -76,7 +79,6 @@ class Doc extends Component {
                         menu={menu}
                         activeHeader={activeHeader}
                     />
-                    
                 </DocumentLayout>
                 <ScrollToTop />
             </>
