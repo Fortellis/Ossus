@@ -24,7 +24,7 @@ All three are avaliable as packages on NPM: `npm install --save ossus ossus-comp
 
 We also provide a starter script so you can get setup with Ossus in one command, just run `npx create-ossus` in the directory you want to use.
 
-More information can be found on our [documentation](ossus.fortellis.io).
+More information can be found on our [documentation](https://ossus.fortellis.io).
 
 ## Contributing
 
