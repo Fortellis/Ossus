@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-const Builder = require('./scripts/Builder');
+const Builder = require('./scripts/builder');
+const { log, writeTocFile } = require('./utils/helpers');
 const help = `
     Usage: ossus-scripts <script>
 
@@ -14,15 +15,13 @@ function run() {
   const command = process.argv.slice(2)[0];
   switch (command) {
     case 'build':
-      Builder();
+      writeTocFile(Builder());
       break;
     case 'help':
-      // eslint-disable-next-line
-      console.log(help);
+      log(help);
       break;
     default:
-      // eslint-disable-next-line
-      console.log('Thanks for using Ossus scripts 🤩');
+      log('Thanks for using Ossus scripts 🤩');
   }
 }
 

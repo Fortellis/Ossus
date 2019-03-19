@@ -8,7 +8,8 @@
     "prepare": "npm run clean; npm run build",
     "build": "babel src -d dist",
     "clean": "rm -r dist",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "test": "jest"
   },
   "bin": {
     "ossus-scripts": "dist/index.js"
