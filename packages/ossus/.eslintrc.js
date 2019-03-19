@@ -3,7 +3,8 @@ module.exports = {
     "env": {
         "node": true,
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -15,7 +16,8 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "babel"
+        "babel",
+        "jest"
     ],
     "rules": {
         "indent": [

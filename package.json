@@ -4,6 +4,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "lint": "lerna run lint",
+    "test": "lerna run test --stream",
     "build": "lerna exec --scope *ossus* --parallel -- npm run build",
     "clean:dist": "shx rm -rf packages/*/dist",
     "clean:tgz": "shx rm -rf packages/*/*.tgz",
@@ -23,11 +24,21 @@
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.5.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.12.0",
     "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-jest": "^22.4.1",
     "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.5.0",
     "lerna": "^3.13.1",
     "markdown-loader": "^4.0.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-test-renderer": "^16.8.4"
+  },
+  "dependencies": {
+    "enzyme": "^3.9.0"
   }
 }
