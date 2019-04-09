@@ -79,7 +79,7 @@ const site = {
 
 const theme = {
   color: {
-    primary: '#000',
+    primary: '#333',
     fg: 'rgba(0,0,0,.87)'
   },
   font: {
