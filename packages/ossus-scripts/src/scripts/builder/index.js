@@ -5,7 +5,6 @@ const {
   isDir,
   isFile,
   readDir,
-  writeOut,
   joinPaths,
   pathExists,
   getFullPath,
@@ -99,6 +98,9 @@ function handlePages(path) {
   }, {});
 }
 
+/* TODO:
+ * Support args for changing the names of both doc and blog directories
+ */
 function main() {
   const toc = {};
   // Define content directories

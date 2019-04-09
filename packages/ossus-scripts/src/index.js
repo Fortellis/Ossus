@@ -16,6 +16,7 @@ function run() {
   switch (command) {
     case 'build':
       writeTocFile(Builder());
+      log('Wrote out table of contents!');
       break;
     case 'help':
       log(help);
