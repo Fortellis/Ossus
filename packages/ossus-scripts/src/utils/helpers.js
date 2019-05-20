@@ -1,4 +1,5 @@
-const { writeOut, getFullPath, joinPaths } = require('./fsUtils');
+const { writeOut, getFullPath, joinPaths, isFile, readFile } = require('./fsUtils');
+const { extractFrontmatter } = require('./frontmatter');
 
 function log(message) {
   // eslint-disable-next-line
@@ -18,8 +19,24 @@ function writeTocFile(toc) {
   );
 }
 
+function parseDocument(location) {
+  try {
+    isFile(location);
+  } catch (err) {
+    throw err;
+  }
+  // Parse document
+  const content = readFile(location);
+  const metadata = extractFrontmatter(content);
+  return {
+    metadata,
+    content
+  };
+}
+
 module.exports = {
   log,
   blogSort,
-  writeTocFile
+  writeTocFile,
+  parseDocument
 };

@@ -1,8 +1,32 @@
 {
-    "overview": {
-        "label": "Overview"
+  "pages": [
+    {
+      "name": "overview",
+      "label": "Overview",
+      "sections": [
+        {
+          "name": "getting-started",
+          "label": "Getting Started",
+          "documents": [
+            "installation",
+            "basics",
+            "configuration"
+          ]
+        }
+      ]
     },
-    "api": {
-        "label": "API"
+    {
+      "name": "api",
+      "label": "API",
+      "sections": [
+        {
+          "name": "intro",
+          "label": "Introduction",
+          "documents": [
+            "basics"
+          ]
+        }
+      ]
     }
+  ]
 }

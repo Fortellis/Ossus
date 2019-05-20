@@ -17,6 +17,10 @@ function getFullPath(pth) {
   return path.resolve(process.cwd(), ...pth.split(path.sep));
 }
 
+function getPath(pth) {
+  return path.resolve(pth);
+}
+
 function pathExists(pth) {
   return fs.existsSync(pth);
 }
@@ -45,13 +49,21 @@ function joinPaths(...paths) {
   return path.join(...paths);
 }
 
+function createDir(pth) {
+  if (!pathExists(pth)) {
+    fs.mkdirSync(pth);
+  }
+}
+
 module.exports = {
   isDir,
   isFile,
+  getPath,
   readDir,
   writeOut,
   readFile,
   joinPaths,
+  createDir,
   pathExists,
   getFullPath,
   isFileHidden,
