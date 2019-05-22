@@ -1,6 +1,6 @@
 {
   "name": "ossus",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "A customizable documentation framework built on next js",
   "main": "dist/index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "remark-frontmatter": "^1.3.0",
     "remark-outer-toc": "^1.0.0",
     "remark-react": "^4.0.3",
-    "remark-slug": "^5.1.0"
+    "remark-slug": "^5.1.0",
+    "ossus-builders": "^2.0.0"
   }
 }

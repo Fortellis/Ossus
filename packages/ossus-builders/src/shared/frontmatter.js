@@ -1,5 +1,3 @@
-const { readFile } = require('../../utils/fsUtils');
-
 function parseFrontMatter(fm) {
   let data = {};
   let matches;
@@ -11,10 +9,9 @@ function parseFrontMatter(fm) {
   return data;
 }
 
-function extractFrontmatter(path) {
-  const md = readFile(path);
+function extractFrontmatter(src) {
   const re = /---\n((([^\n]+:)\s{1}[^\n]+\n)+)---/;
-  const res = re.exec(md);
+  const res = re.exec(src);
   if (!res) {
     return null;
   }

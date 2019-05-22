@@ -1,6 +1,7 @@
-const express = require('express');
 const next = require('next');
+const express = require('express');
 const { Routes } = require('ossus');
+// Variables
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handler = Routes.getRequestHandler(app);

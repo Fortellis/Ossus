@@ -1,0 +1,14 @@
+{
+  "name": "ossus-builders",
+  "author": "Jared K Jones",
+  "version": "2.0.0",
+  "description": "Document builders for Ossus documentation Framework",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "npm run clean; npm run build",
+    "build": "babel src -d dist",
+    "clean": "rm -r dist",
+    "lint": "eslint ./src",
+    "test": "jest"
+  }
+}

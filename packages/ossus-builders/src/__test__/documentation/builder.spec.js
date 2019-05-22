@@ -1,8 +1,8 @@
 // Imports
-const fsUtil = require('../../utils/fsUtils');
-const { docsBuilder } = require('../../builders/docsBuilder');
+const fsUtil = require('../../shared/filesystem');
+const { documentationBuilder } = require('../../documentation');
 // Mocks
-jest.mock('../../utils/fsUtils');
+jest.mock('../../shared/filesystem');
 const { INDEX_MOCK, DOCUMENT_MOCK } = require('./mocks');
 // Variables
 const urlForm = '/:page/:section/:doc';
@@ -21,7 +21,7 @@ describe('Docs Builder', () => {
   test('Should throw error if missing index.json', () => {
     fsUtil.isFile.mockReturnValueOnce(false);
     try {
-      docsBuilder(options);
+      documentationBuilder(options);
     } catch (err) {
       expect(err.message).toEqual('Index.json is required to build structure.');
     }
@@ -33,7 +33,7 @@ describe('Docs Builder', () => {
       .mockReturnValueOnce(true)
       .mockReturnValueOnce(false);
     try {
-      docsBuilder(options);
+      documentationBuilder(options);
     } catch (err) {
       expect(err.message).toEqual('Missing defined documents.');
       expect(err.documents).toHaveLength(1);
@@ -43,7 +43,7 @@ describe('Docs Builder', () => {
   test('Should throw error if fails to read/write document', () => {
     fsUtil.writeOut.mockImplementationOnce(() => { throw {}; });
     try {
-      docsBuilder(options);
+      documentationBuilder(options);
     } catch (err) {
       expect(err.message).toEqual('Failed to transform document.');
       //expect(err.document).stringContaining(INDEX_MOCK.pages[0].sections[0].documents[0]);
@@ -51,7 +51,7 @@ describe('Docs Builder', () => {
   });
 
   test('Should output a correct TOC with valid input', () => {
-    const toc = docsBuilder(options);
+    const toc = documentationBuilder(options);
     // Ensure return values are valid
     expect(toc.route).toEqual(options.route + urlForm);
     expect(toc.pages).toHaveLength(INDEX_MOCK.pages.length);

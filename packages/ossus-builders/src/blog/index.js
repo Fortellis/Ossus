@@ -1,12 +1,11 @@
 const {
   isFile,
-  getPath,
   writeOut,
   createDir,
   getFullPath,
   readJsonFile
-} = require('../../utils/fsUtils');
-const { parseDocument } = require('../../utils/helpers');
+} = require('../shared/filesystem');
+const { parseDocument } = require('../shared/utilities');
 // Variables
 const urlForm = '/:post';
 
@@ -18,7 +17,7 @@ const urlForm = '/:post';
  */
 function blogBuilder(options) {
   const { directory, route } = options;
-  const directoryPath = getPath(directory);
+  const directoryPath = getFullPath(directory);
   // Ensure the directory has an index.json for ordering
   // Allow for sort based ordering by date in frontmatter as option
   if (!isFile(directoryPath + '/index.json')) {

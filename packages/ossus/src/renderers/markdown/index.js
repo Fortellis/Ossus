@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import remark from 'remark';
+import slug from 'remark-slug';
+import PropTypes from 'prop-types';
+import outerToc from 'remark-outer-toc';
 import reactRenderer from 'remark-react';
 import frontmatter from 'remark-frontmatter';
-import slug from 'remark-slug';
-import outerToc from 'remark-outer-toc';
 import externalLinks from 'remark-external-links';
-
-import { wordCount, readTime } from './utils/readTime';
+import { wordCount, readTime } from '../../utils/readTime';
 
 function headerDepth(header) {
   if (header[0] !== 'H') return -1;

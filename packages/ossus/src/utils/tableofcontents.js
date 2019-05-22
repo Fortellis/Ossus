@@ -1,3 +1,13 @@
+export function tocHandler(toc) {
+  function getPage(route) {
+    return toc[route];
+  }
+
+  return {
+    getPage,
+  };
+}
+
 // Docs utility for interacting with the site structure
 function tocUtil(tocs) {
   const docToc = tocs.docs;

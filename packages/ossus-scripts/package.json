@@ -1,15 +1,23 @@
 {
   "name": "ossus-scripts",
   "author": "Jared K Jones",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Build scripts for Ossus documentation Framework",
   "main": "dist/index.js",
   "scripts": {
     "prepare": "npm run clean; npm run build",
     "build": "babel src -d dist",
     "clean": "rm -r dist",
-    "lint": "eslint ./src",
-    "test": "jest"
+    "lint": "eslint ./src"
+  },
+  "dependencies": {
+    "ossus-builders": "^2.0.0"
+  },
+  "peerDependencies": {
+    "ossus": "^2.0.0"
+  },
+  "devDependencies": {
+    "ossus": "^2.0.0"
   },
   "bin": {
     "ossus-scripts": "dist/index.js"

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
+const { loadConfig } = require('ossus');
 const { log, writeTocFile } = require('./utils/helpers');
-const { loadConfig } = require('./config');
 const help = `
     Usage: ossus-scripts <script>
 

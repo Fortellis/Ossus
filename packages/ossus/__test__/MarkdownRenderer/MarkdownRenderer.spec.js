@@ -1,6 +1,6 @@
 import React from 'react';
-import MarkdownRenderer from '../../src/MarkdownRenderer';
 import renderer from 'react-test-renderer';
+import MarkdownRenderer from '../../src/renderers/markdown';
 // Mocks
 import { MOCK_MD, MOCK_FRONT, MOCK_MENU, MOCK_COMPONENTS } from '../mocks';
 

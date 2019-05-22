@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import tocUtil from './utils/tocUtil';
+import tocUtil from './utils/tableofcontents';
 
 // HOC to manage the state required for the base doc component
 // Expects to be wrapped by withConfig HOC

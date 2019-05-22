@@ -1,12 +1,11 @@
 const {
   isFile,
-  getPath,
   writeOut,
   createDir,
   getFullPath,
   readJsonFile
-} = require('../../utils/fsUtils');
-const { parseDocument } = require('../../utils/helpers');
+} = require('../shared/filesystem');
+const { parseDocument } = require('../shared/utilities');
 // Variables
 const urlForm = '/:page/:section/:doc';
 
@@ -16,9 +15,9 @@ const urlForm = '/:page/:section/:doc';
  * @param {string} dirPath
  * @param {string} urlPath
  */
-function docsBuilder(options) {
+function documentationBuilder(options) {
   const { directory, route } = options;
-  const directoryPath = getPath(directory);
+  const directoryPath = getFullPath(directory);
   // Ensure the directory has an index.json
   if (!isFile(directoryPath + '/index.json')) {
     throw { message: 'Index.json is required to build structure.' };
@@ -99,5 +98,5 @@ function validateDocuments(directory, index) {
 }
 
 module.exports = {
-  docsBuilder
+  documentationBuilder
 };
