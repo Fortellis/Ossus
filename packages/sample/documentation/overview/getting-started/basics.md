@@ -27,7 +27,7 @@ root
 
 ## Documentation Structure
 
-The documentation of the site is held under the `/documentation` directory and requires some specific structure to ensure that all of the automagic greatness happens when you run the site.
+The documentation $[testEnv] of the site is held under the `/documentation` directory and requires some specific structure to ensure that all of the automagic greatness happens when you run the site.
 
 The sites structure is dynamically created by the structure of your documentation *(any files under `/documenation`)*. It is important to remember this because Ossus uses automated scripts to generate your file structure, so if a file falls where it isn't supposed to be it won't be picked up. To give you more fine grained control over the layout of the site each folder under documentation must have an `index.json`. This file allows for you to determine the order of files and folders and the human readable names that will be displayed in the table of contents and the breadcrumbs. It's also important to note that if a file or directory is not defined in your `index.json` file it won't get displayed on the site.
 

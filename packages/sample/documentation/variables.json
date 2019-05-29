@@ -1,0 +1,6 @@
+{
+  "testEnv": {
+    "dev": "BOOM",
+    "prod": "BANG"
+  }
+}

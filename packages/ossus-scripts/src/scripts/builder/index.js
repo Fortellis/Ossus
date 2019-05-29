@@ -5,32 +5,52 @@ const {
   isDir,
   isFile,
   readDir,
+  readFile,
+  writeOut,
   joinPaths,
   pathExists,
   getFullPath,
   isFileHidden,
   readJsonFile,
-  containsIndex,
+  containsIndex
 } = require('../../utils/fsUtils');
 // Variables
 const { DEFAULT_BLOG_DIR, DEFAULT_DOC_DIR } = require('../../constants');
 
-function handleBlogPosts(path, sortFn) {
+function handleBlogPosts(path, sortFn, options) {
   const files = readDir(path);
   return files
     .map(file => {
       const filePath = joinPaths(path, file);
-      return handleFile(filePath, file);
+      return handleFile(filePath, file, options);
     })
     .sort(sortFn);
 }
 
-function handleFile(path, file) {
+function replaceVariables(md, options) {
+  const re = /\$\[(.+)\]/g;
+  const newMd = md.replace(re, (match, p1) => {
+    return options.variables[p1][options.env];
+  });
+  return newMd;
+}
+
+function handleFile(path, file, options) {
   if (!isFile(path) || isFileHidden(file)) {
     log(`Oops... couldn't find ${file}`);
     return;
   }
-  const fm = extractFrontmatter(path);
+  const md = readFile(path);
+  const fm = extractFrontmatter(md);
+
+  if (options.variables) {
+    const newMd = replaceVariables(md, options);
+    // If variables used re-write file
+    if (md !== newMd) {
+      writeOut(path, newMd);
+    }
+  }
+
   const name = file.split('.')[0];
   if (!fm) {
     log(`You should consider adding frontmatter to ${file}`);
@@ -47,7 +67,7 @@ function handleFile(path, file) {
   };
 }
 
-function handleSection(path, section) {
+function handleSection(path, section, options) {
   if (!isDir(path) || isFileHidden(section.route)) {
     log(`Oops... couldn't find section: ${section}`);
     return;
@@ -58,7 +78,7 @@ function handleSection(path, section) {
   }
   const index = readJsonFile(joinPaths(path, 'index.json'));
   const children = index.order.map(doc => {
-    return handleFile(joinPaths(path, doc), doc);
+    return handleFile(joinPaths(path, doc), doc, options);
   });
   return {
     route: section.route,
@@ -67,7 +87,7 @@ function handleSection(path, section) {
   };
 }
 
-function handlePages(path) {
+function handlePages(path, options) {
   const index = readJsonFile(joinPaths(path, 'index.json'));
   return Object.entries(index).reduce((toc, page) => {
     const [key, value] = page;
@@ -91,7 +111,11 @@ function handlePages(path) {
     // Process index.json
     const index = readJsonFile(joinPaths(pagePath, 'index.json'));
     index.order.map(section => {
-      const s = handleSection(joinPaths(pagePath, section.route), section);
+      const s = handleSection(
+        joinPaths(pagePath, section.route),
+        section,
+        options
+      );
       if (s) pageContents.sections.push(s);
     });
     return { ...toc, [key]: pageContents };
@@ -103,16 +127,22 @@ function handlePages(path) {
  */
 function main() {
   const toc = {};
+  const options = {};
+  options.env = process.argv[3] || 'dev';
   // Define content directories
   const docPath = getFullPath(DEFAULT_DOC_DIR);
   const blogPath = getFullPath(DEFAULT_BLOG_DIR);
 
   if (pathExists(docPath)) {
-    toc.docs = handlePages(docPath);
+    const vPath = `${docPath}/variables.json`;
+    if (pathExists(vPath)) {
+      options.variables = readJsonFile(vPath);
+    }
+    toc.docs = handlePages(docPath, options);
   }
 
   if (pathExists(blogPath)) {
-    toc.blog = handleBlogPosts(blogPath, blogSort);
+    toc.blog = handleBlogPosts(blogPath, blogSort, options);
   }
 
   return toc;

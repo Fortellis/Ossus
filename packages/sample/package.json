@@ -7,7 +7,7 @@
     "dev": "npm run structure; node server.js",
     "build": "npm run structure; next build",
     "start": "NODE_ENV=production node server.js",
-    "structure": "ossus-scripts build",
+    "structure": "ossus-scripts build prod",
     "export": "next export",
     "create": "mkdir test; cd test; create-ossus"
   },
