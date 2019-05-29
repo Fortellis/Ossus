@@ -1,6 +1,6 @@
 export function tocHandler(toc) {
   function getPage(route) {
-    return toc[route];
+    return toc[route] ? toc[route].pages : [];
   }
 
   return {
