@@ -1,12 +1,14 @@
-const { documentationBuilder } = require('ossus-builders');
+const { ossusBuilder } = require('ossus-builders');
 // Variables
 const CONFIG_FILE_NAME = 'ossus.config.js';
 const DEFAULT_CONFIG = {
   documents: [
     {
       directory: '/documentation',
-      route: '/docs',
-      builder: documentationBuilder
+      route: 'docs',
+      page: 'doc',
+      builder: ossusBuilder,
+      depth: 2
     }
   ]
 };

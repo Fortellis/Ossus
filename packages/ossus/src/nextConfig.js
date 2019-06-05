@@ -1,48 +1,56 @@
-function generatePathMap(tocs, paths) {
+function generatePathMap(toc, paths) {
   return async () => {
-    const docToc = tocs.docs;
-    const blogToc = tocs.blog;
-
     return {
       '/': { page: '/' },
       '/404': { page: '/_error' },
       ...paths,
-      ...generateDocsMap(docToc),
-      ...generateBlogMap(blogToc),
+      ...generatePaths(toc)
     };
   };
 }
 
-function generateBlogMap(blogToc) {
-  if (!blogToc) return {};
+function generatePaths(toc) {
+  let docs = {};
+  // For each set of documents in toc build paths objects
+  Object.entries(toc).forEach(([route, contents]) => {
+    // Gather base documents with their locations intact
+    const documents = getBaseDocuments(contents).reduce((acc, d) => {
+      // The location contains the query params but need to be repeated
+      const queryParams = d.location.split('/');
+      const query = queryParams
+        .slice(1, queryParams.length + 1) // Need to remove the leading empty item
+        .reduce((acc, param, idx) => {
+          return { ...acc, [idx]: param };
+        }, {});
 
-  const reducer = (map, blog) => ({
-    ...map,
-    [`/blog/${blog.doc}`]: { page: '/blog', query: { post: blog.doc } }
+      return {
+        ...acc,
+        [`${route}${d.location}`]: { page: contents.page, query }
+      };
+    }, {});
+    docs = { ...docs, ...documents };
   });
 
-  return blogToc.reduce(reducer, {});
+  return docs;
 }
 
-function generateDocsMap(docToc) {
-  if (!docToc) return {};
-
-  const pageKeys = Object.keys(docToc);
-  const addDoc = (acc, route, obj) => ({ ...acc, [route]: obj });
-
-  let docs = {};
-
-  pageKeys.forEach(page => {
-    docToc[page].sections.forEach(section => {
-      section.children.forEach(doc => {
-        docs = addDoc(docs, `/docs/${page}/${section.route}/${doc.doc}`, {
-          page: '/doc',
-          query: { page, section: section.route, doc: doc.doc }
-        });
+function getBaseDocuments(index) {
+  const depth = index.depth;
+  let collection = [index];
+  for (let i = 0; i <= depth; i++) {
+    collection = collection.reduce((acc, child) => {
+      const children = getChildren(child).map(c => {
+        const loc = child.location || '';
+        return { ...c, location: `${loc}/${c.name}` };
       });
-    });
-  });
-  return docs;
+      return [...acc, ...children];
+    }, []);
+  }
+  return collection;
+}
+
+function getChildren(object) {
+  return object.children || [];
 }
 
 export default generatePathMap;

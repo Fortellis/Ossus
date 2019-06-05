@@ -1,16 +1,13 @@
-const { documentationBuilder, blogBuilder } = require('ossus-builders');
+const { documentationBuilder, blogBuilder, ossusBuilder } = require('ossus-builders');
 
 module.exports = {
   documents: [
     {
       directory: '/documentation',
-      route: '/docs',
-      builder: documentationBuilder
-    },
-    {
-      directory: '/blog',
-      route: '/posts',
-      builder: blogBuilder
+      route: 'docs',
+      builder: ossusBuilder,
+      depth: 2,
+      page: 'doc'
     }
   ]
 }

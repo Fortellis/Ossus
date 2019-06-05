@@ -1,13 +1,13 @@
 {
-  "pages": [
+  "children": [
     {
       "name": "overview",
       "label": "Overview",
-      "sections": [
+      "children": [
         {
           "name": "getting-started",
           "label": "Getting Started",
-          "documents": [
+          "children": [
             "installation",
             "basics",
             "configuration"
@@ -18,11 +18,11 @@
     {
       "name": "api",
       "label": "API",
-      "sections": [
+      "children": [
         {
           "name": "intro",
           "label": "Introduction",
-          "documents": [
+          "children": [
             "basics"
           ]
         }

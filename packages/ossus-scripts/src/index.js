@@ -18,8 +18,12 @@ function run() {
     case 'build':
       if (config.documents) {
         config.documents.forEach(({ builder, ...options }) => {
-          const tocDefinition = builder(options);
-          toc[options.route] = tocDefinition;
+          try {
+            const tocDefinition = builder(options);
+            toc[options.route] = tocDefinition;
+          } catch (err) {
+            log(err);
+          }
         });
       }
       writeTocFile(toc);
