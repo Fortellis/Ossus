@@ -54,7 +54,7 @@ const TocContainer = styled('div')`
   margin-bottom: 1em;
   background-color: white;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   min-width: ${p => p.theme.size.width.toc + p.theme.size.unit};
   max-width: ${p => p.theme.size.width.toc + p.theme.size.unit};
