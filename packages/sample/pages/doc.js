@@ -50,7 +50,6 @@ class Doc extends Component {
             watchFront,
             watchScroll,
         } = this.props;
-        console.log(watchFront);
         // Handle 404 errors for unknown doc links
         if (statusCode === 404) {
             return <ErrorPage statusCode={statusCode} />
