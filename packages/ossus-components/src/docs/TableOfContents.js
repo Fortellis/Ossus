@@ -64,10 +64,12 @@ const TocContainer = styled('div')`
     return '0em';
   }} + 1em);
 
-  max-height: calc(100vh - (${p => {
+  @media (min-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
+    max-height: calc(100vh - (${p => {
     if (p.theme.header.sticky) return p.theme.size.height.header + p.theme.size.height.breadcrumbs + p.theme.size.unit;
     return '0em';
   }} + 1em));
+  }
 
   @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
     position: static;
