@@ -53,6 +53,8 @@ const TocContainer = styled('div')`
   position: sticky;
   margin-bottom: 1em;
   background-color: white;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   min-width: ${p => p.theme.size.width.toc + p.theme.size.unit};
   max-width: ${p => p.theme.size.width.toc + p.theme.size.unit};
@@ -62,10 +64,17 @@ const TocContainer = styled('div')`
     return '0em';
   }} + 1em);
 
+  @media (min-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
+    max-height: calc(100vh - (${p => {
+    if (p.theme.header.sticky) return p.theme.size.height.header + p.theme.size.height.breadcrumbs + p.theme.size.unit;
+    return '0em';
+  }} + 1em));
+  }
+
   @media (max-width: ${p => p.theme.size.responsive.mobile + p.theme.size.responsive.unit}) {
-      position: static;
-      min-width: 100%;
-      max-width: 100%;
+    position: static;
+    min-width: 100%;
+    max-width: 100%;
   }
 `;
 
