@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarkdownRenderer MarkdownRenderer renders markdown correctly 1`] = `
+<div>
+  <h1
+    id="test-title"
+  >
+    Test Title
+  </h1>
+  
+
+  <h2
+    id="test-title-2"
+  >
+    Test Title 2
+  </h2>
+  
+
+  <h3
+    id="test-title-3"
+  >
+    Test Title 3
+  </h3>
+  
+
+  <h4
+    id="test-title-4"
+  >
+    Test Title 4
+  </h4>
+  
+
+  <p>
+    Just a simple test paragraph
+  </p>
+  
+
+  <p>
+    Test paragraph that has both 
+    <strong>
+      bold
+    </strong>
+     and 
+    <em>
+      italics
+    </em>
+  </p>
+  
+
+  <p>
+    <a
+      href="https://ossus.fortellis.io"
+      rel="nofollow noopener noreferrer"
+      target="_blank"
+    >
+      Fake Link
+    </a>
+  </p>
+  
+
+  <p>
+    Paragraph with a 
+    <a
+      href="https://ossus.fortellis.io"
+      rel="nofollow noopener noreferrer"
+      target="_blank"
+    >
+      Fake Link
+    </a>
+     embedded in it.
+  </p>
+  
+
+  <blockquote>
+    
+
+    <p>
+      A blockquote
+    </p>
+    
+
+  </blockquote>
+  
+
+  <p>
+    <img
+      src="https://fakeimage.com/test.png"
+    />
+  </p>
+</div>
+`;
+
+exports[`MarkdownRenderer MarkdownRenderer renders markdown correctly given components 1`] = `
+<div>
+  <div
+    id="test-title"
+  >
+    Test Title
+  </div>
+  
+
+  <p
+    id="test-title-2"
+  >
+    Test Title 2
+  </p>
+  
+
+  <div
+    id="test-title-3"
+  >
+    Test Title 3
+  </div>
+  
+
+  <h4
+    id="test-title-4"
+  >
+    Test Title 4
+  </h4>
+  
+
+  <div>
+    Just a simple test paragraph
+  </div>
+  
+
+  <div>
+    Test paragraph that has both 
+    <strong>
+      bold
+    </strong>
+     and 
+    <em>
+      italics
+    </em>
+  </div>
+  
+
+  <div>
+    <a
+      href="https://ossus.fortellis.io"
+      rel="nofollow noopener noreferrer"
+      target="_blank"
+    >
+      Fake Link
+    </a>
+  </div>
+  
+
+  <div>
+    Paragraph with a 
+    <a
+      href="https://ossus.fortellis.io"
+      rel="nofollow noopener noreferrer"
+      target="_blank"
+    >
+      Fake Link
+    </a>
+     embedded in it.
+  </div>
+  
+
+  <blockquote>
+    
+
+    <div>
+      A blockquote
+    </div>
+    
+
+  </blockquote>
+  
+
+  <div>
+    <img
+      src="https://fakeimage.com/test.png"
+    />
+  </div>
+</div>
+`;
