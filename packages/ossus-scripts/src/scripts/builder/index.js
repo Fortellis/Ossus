@@ -28,7 +28,8 @@ function handleBlogPosts(path, sortFn, options) {
 }
 
 function replaceVariables(md, options) {
-  const re = /\$\[(.+)\]/g;
+  // Requires Node 8.10
+  const re = /(?<!\\)\$\[(\w+)\]/g;
   const newMd = md.replace(re, (match, p1) => {
     return options.variables[p1][options.env];
   });
