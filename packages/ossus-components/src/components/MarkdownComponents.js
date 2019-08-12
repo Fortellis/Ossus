@@ -45,6 +45,10 @@ const Pre = styled('pre')`
   word-wrap: break-word;
   max-height: 400px;
   overflow: auto;
+
+  code {
+    background-color: transparent;
+  }
 `;
 
 const Table = styled('table')`
@@ -119,8 +123,22 @@ const Ul = styled('ul')`
       padding: 3px;
     }
 
+    pre {
+      code {
+        background-color: transparent;
+      }
+    }
+
     p {
+      color: ${p => p.theme.type.list.color};
+
       margin: 0px;
+    }
+
+    blockquote {
+      p {
+        color: ${p => p.theme.color.fgOnDark};
+      }
     }
   }
 `;
@@ -142,8 +160,22 @@ const Ol = styled('ol')`
       padding: 3px;
     }
 
+    pre {
+      code {
+        background-color: transparent;
+      }
+    }
+
     p {
+      color: ${p => p.theme.type.list.color};
+
       margin: 0px;
+    }
+    
+    blockquote {
+      p {
+        color: ${p => p.theme.color.fgOnDark};
+      }
     }
   }
 `;
@@ -213,6 +245,10 @@ const Blockquote = styled('blockquote')`
 
   p {
     color: ${p => p.theme.color.fgOnDark};
+  }
+
+  code {
+    color: ${p => p.theme.color.fg};
   }
 `;
 
